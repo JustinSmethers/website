@@ -31,7 +31,7 @@ DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = ['justinsmethers.com', '127.0.0.1']
 
-
+GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'buzzz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +86,7 @@ DATABASES = {
         'USER': os.getenv('DATABASE_USER'),
         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
         'HOST': os.getenv('HOST'),
-        'PORT': '',
+        'PORT': os.getenv('PORT'),
     }
 }
 
