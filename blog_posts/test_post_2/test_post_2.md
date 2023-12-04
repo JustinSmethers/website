@@ -1,3 +1,7 @@
-**This is a second test post**
+---
+title: "Test Post 2"
+description: "Lazy test description"
+thumbnail: "thumbnail.jpg"
+---
 
-Just making sure the app iterates through all of the posts
+some words here
