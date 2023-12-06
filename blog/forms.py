@@ -8,4 +8,4 @@ class BlogPostForm(forms.ModelForm):
 
     class Meta:
         model = BlogPost
-        fields = ['title', 'description', 'content', 'image'] # other fields if there are any
+        fields = ['title', 'description', 'content', 'thumbnail'] # other fields if there are any
