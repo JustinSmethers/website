@@ -6,6 +6,6 @@ thumbnail: "thumbnail.jpg"
 
 Testing whether the blog app works and correctly parses the md file and displays it correctly
 
-![Picture of a cat that I think is pretty funny](https://raw.githubusercontent.com/justinsmethers/website/blob/github-api-integration/blog_posts/test_post_1/picture_of_cat.jpg)
+![Picture of a cat that I think is pretty funny](https://github.com/justinsmethers/website/blob/github-api-integration/blog_posts/test_post_1/picture_of_cat.jpg)
 
 Anyways here's some more text
