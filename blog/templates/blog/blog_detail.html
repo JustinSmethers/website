@@ -1,20 +1,23 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<div class="header-container">
-    <!-- Image filling the bar -->
-    <img src="{{ post.thumbnail }}" alt="Thumbnail">
+<link rel="stylesheet" href="{% static 'your_app/css/blog.css' %}" type="text/css">
 
-    <!-- Title and Description next to the image -->
-    <div class="header-text">
-        <p class="post-title">{{ post.title }}<p>
-        <p class="post-description">{{ post.description }}</p> 
+<div class="blog-post-wrapper">    
+    <div class="blog-post white-glow">
+        <a href="{% url 'blog:index' %}" class="back-button">< Back</a>
+        <div class="header-container">
+            <img src="{{ post.thumbnail }}" alt="Thumbnail" class="thumbnail">
+            <div class="header-text">
+                <p class="post-title">{{ post.title }}</p>
+                <p class="post-description">{{ post.description }}</p> 
+            </div>
+        <hr class="divider">
+        </div>
+        <div class="post-content">
+            {{ post.content|safe }} 
+        </div>
     </div>
 </div>
-
-<!-- Post content underneath the header bar -->
-<div class="post-content">
-    {{ post.content|safe }} 
-</div>
-
 {% endblock %}
