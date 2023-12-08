@@ -13,7 +13,7 @@ class Command(BaseCommand):
         g = Github(os.environ.get('GITHUB_TOKEN'))
         repo = g.get_repo(f"{os.environ.get('GITHUB_USERNAME')}/{os.environ.get('GITHUB_REPO')}")
         branch_ref = repo.get_branch(os.environ.get('GITHUB_BRANCH'))
-        self.base_url = f"https://{os.environ.get('GITHUB_USERNAME')}.github.io/{os.environ.get('GITHUB_REPO')}/"
+        self.base_url = f"https://{os.environ.get('GITHUB_USERNAME')}.github.io/{os.environ.get('GITHUB_REPO')}"
 
         directories = repo.get_contents(path=os.environ.get('GITHUB_BLOG_POSTS_FILEPATH'), ref=branch_ref.commit.sha)
         for directory in directories:
