@@ -13,6 +13,7 @@ class Command(BaseCommand):
         g = Github(os.environ.get('GITHUB_TOKEN'))
         repo = g.get_repo(f"{os.environ.get('GITHUB_USERNAME')}/{os.environ.get('GITHUB_REPO')}")
         branch_ref = repo.get_branch(os.environ.get('GITHUB_BRANCH'))
+        self.base_url = f"https://{os.environ.get('GITHUB_USERNAME')}.github.io/{os.environ.get('GITHUB_REPO')}/"
 
         directories = repo.get_contents(path=os.environ.get('GITHUB_BLOG_POSTS_FILEPATH'), ref=branch_ref.commit.sha)
         for directory in directories:
@@ -27,7 +28,7 @@ class Command(BaseCommand):
     def process_markdown_file(self, md_file, dir_path, repo, branch_ref):
         content = md_file.decoded_content.decode()
         metadata, content = self.parse_markdown(content)
-        thumbnail_url = self.get_file_url(dir_path, metadata.get('thumbnail', ''), repo, branch_ref)
+        thumbnail_url = self.get_file_url(dir_path, metadata.get('thumbnail', ''))
 
         # Replace local image paths with absolute URLs
         content = self.replace_image_paths(content, dir_path, repo, branch_ref)
@@ -59,16 +60,13 @@ class Command(BaseCommand):
         def replace(match):
             alt_text, img_path = match.groups()
             # Use get_file_url to get the absolute URL
-            img_url = self.get_file_url(dir_path, img_path, repo, branch_ref)
+            img_url = self.get_file_url(dir_path, img_path)
+            print('IMAGE URL', img_url)
             return f"![{alt_text}]({img_url})"
 
         return re.sub(pattern, replace, content)
 
-    def get_file_url(self, dir_path, filename, repo, branch_ref):
+    def get_file_url(self, dir_path, filename):
         if filename:
-            try:
-                file = repo.get_contents(f"{dir_path}/{filename}", ref=branch_ref.commit.sha)
-                return file.download_url
-            except:
-                return None
+            return f'{self.base_url}/{dir_path}/{filename}'
         return ''
