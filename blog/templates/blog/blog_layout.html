@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block additional_styles %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 sidebar">
+            <div class="sidebar-image">
+                <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="GitHub Profile Image" class="img-fluid mb-3">
+            </div>
+            <h1>Hi, I'm Justin.</h1>
+            <p><br>For the last few years, I've worked in data analytics and data engineering. Currently, I'm working on a range of projects. This blog is my platform to share these adventures, insights, and, occassionally, breakthroughs.<br><br></p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9">
+            {% for post in posts %}
+            <a href="{% url 'blog:blog_detail' post.id %}">
+                <div class="post-card white-glow">
+                    <div class="post-text-content">
+                        <h2>{{ post.title }}</h2>
+                        <p>{{ post.description }}</p>
+                    </div>
+                    <div class="post-image-container">
+                        <img src="{{ post.thumbnail }}" alt="Thumbnail">
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
