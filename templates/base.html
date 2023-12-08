@@ -24,21 +24,12 @@
     
     <body>
         <nav class="p-6 flex items-center justify-between bg-neutral-700"> 
-            <a class="text-xl text-gray-300">Justin Smethers</a>
+            <a class="text-xl text-gray-300" href="/">Justin Smethers</a>
 
-            <div class="space-x-4">
-                <a class="text-white">I'll add socials here eventually</a>
+            <div class="space-x-4 text-gray-300">
+                <p>I'll add socials here eventually</p>
             </div>
         </nav>
-        
-        {% if request.path == '/blog/create/' %}
-            {% if user.is_authenticated %}
-                Hello, {{ user.username }}! <a href="{% url 'core:logout' %}">Logout</a>
-            {% else %}
-                <a href="{% url 'core:login' %}">Login</a>
-            {% endif %}
-        {% endif %}
-
         <main class="p-6">
             {% block content %}
             {% endblock %}
