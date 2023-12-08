@@ -6,4 +6,5 @@ class BlogPost(models.Model):
     content = models.TextField()
     description = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='blog_images/')
+    thumbnail = models.URLField()
+    # image = models.ImageField(upload_to='blog_images/')

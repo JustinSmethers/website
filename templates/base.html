@@ -12,22 +12,22 @@
         <style>
             footer {
                 position: fixed;
-                bottom: 20px;
+                bottom: 0px;
                 width: 100%;
             }
         </style>
 
-        <title>{% block title %}{% endblock %} | Justin Smethers</title>
+        <title>{% block title %}{% endblock %} Random notes and writings | Justin Smethers</title>
         {% load static %}
         <link type="text/css" href="{% static 'blog/css/style.css' %}" rel="stylesheet">
     </head>
     
     <body>
         <nav class="p-6 flex items-center justify-between bg-neutral-700"> 
-            <a href="/" class="text-xl text-gray-300">Justin Smethers</a>
+            <a class="text-xl text-gray-300">Justin Smethers</a>
 
             <div class="space-x-4">
-                <a href="{% url 'blog:index' %}" class="text-white">Blog</a>
+                <a class="text-white">I'll add socials here eventually</a>
             </div>
         </nav>
         
@@ -44,8 +44,8 @@
             {% endblock %}
         </main>
 
-        <footer class="p-6 bg-neutral-700">
-            <p class="text-xs text-gray-400">Copyright (c) 2023 - Justin Smethers</p>
+        <footer class="footer">
+            <p>Copyright (c) 2023 - Justin Smethers</p>
         </footer>
     </body>
 </html>
