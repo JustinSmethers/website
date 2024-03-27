@@ -3,7 +3,7 @@ import sys
 import django
 
 # Adjust these paths and names to fit your project structure and settings
-project_path = '/home/justin/projects/website'
+project_path = '/home/justin/website'
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'buzzz.settings')
 
 # Include the project path in the Python path
