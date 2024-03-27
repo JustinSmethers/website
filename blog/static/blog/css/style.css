@@ -75,7 +75,6 @@ body {
     font-size: 24px;
     color: #fff;
     font-weight: bold;
-    text-decoration: underline;
     margin-bottom: 0; /* Adjust so that only the next element (description) controls the spacing */
 }
 
@@ -269,4 +268,41 @@ body {
         /* Take full container width minus any margin/padding */
         flex-basis: calc(100% - 20px);
     }
+}
+
+/* style header tags directly or something */
+h1 {
+    font-size: 2.5em; /* for example, 40px */
+    color: #fff;
+    margin-bottom: .5em;
+}
+
+h2 {
+    font-size: 2em; /* for example, 36px */
+    color: #fff;
+    margin-bottom: .75em;
+}
+
+h3 {
+    font-size: 1.75em; /* for example, 32px */
+    color: #fff;
+    margin-bottom: .75em;
+}
+
+h4 {
+    font-size: 1.5em; /* for example, 28px */
+    color: #fff;
+    margin-bottom: .75em;
+}
+
+h5 {
+    font-size: 1.25em; /* for example, 24px */
+    color: #fff;
+    margin-bottom: .75em;
+}
+
+h6 {
+    font-size: 1em; /* same as the body font size, for example, 20px */
+    color: #fff;
+    margin-bottom: .75em;
 }
