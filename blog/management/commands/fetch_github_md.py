@@ -1,10 +1,24 @@
+import os
+import sys
+import django
+
+# Adjust these paths and names to fit your project structure and settings
+project_path = '/home/justin/website'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'buzzz.settings')
+
+# Include the project path in the Python path
+sys.path.append(project_path)
+
+# Initialize Django
+django.setup()
+
+
 from django.core.management.base import BaseCommand
 from github import Github
 from blog.models import BlogPost
 import markdown2
 import yaml
 import re
-import os
 
 class Command(BaseCommand):
     help = 'Fetches markdown files from a GitHub repository'
