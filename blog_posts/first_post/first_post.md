@@ -1,6 +1,6 @@
 ---
-title: A Guide for Myself
-description: A guide for myself on how to create posts
+title: "Guide: How I post to this website"
+description: a how-to guide for myself
 thumbnail: first_post_thumbnail.jpg
 ---
 
