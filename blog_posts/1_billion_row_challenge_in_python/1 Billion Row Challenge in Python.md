@@ -1,7 +1,7 @@
 ---
 title: 1 Billion Row Challenge in Python
 description: Processing 1 billion rows with various Python packages
-thumbnail: thumbnail.webp
+thumbnail: 1brc_thumbnail.webp
 ---
 
 # Intro
@@ -21,5 +21,5 @@ The task was to read in the CSV file, perform some aggregations grouped by the s
 I set out to compare how different Python packages handled 1 billion rows and settled on what I was already familiar with: Pandas, Polars, and DuckDB. 
 
 ### Pandas
-![[pandas.png]]
+![Pandas code snippet](pandas.png)
 
