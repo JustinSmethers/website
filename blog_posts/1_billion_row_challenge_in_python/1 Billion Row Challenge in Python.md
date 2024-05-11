@@ -72,6 +72,7 @@ Below is a table with the number of rows processed on a particular run, and how 
 | 100 million    |                   40.7 |
 | 250 million    |                  106.8 |
 | 500 million    |                 Killed |
+
 When I ran the script to process 500 million rows, I ran into a memory error and the process was killed 
 
 ### Polars
@@ -123,6 +124,7 @@ Below is a table with the number of rows processed on a particular run, and how 
 | 100 million    |                   7.2s |
 | 300 million    |                   47.4 |
 | 500 million    |                 Killed |
+
 Same as Pandas, when I ran the script to process 500 million rows, I ran into a memory error and the process was killed 
 
 ### DuckDB
