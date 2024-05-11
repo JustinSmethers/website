@@ -7,9 +7,9 @@ thumbnail: 1brc_thumbnail.webp
 # What is this?
 This is a blog post expanding on this project I tried out - the 1 Billion Row Challenge in Python - which I also presented at the Michigan Python May 2024 Meetup group as part of my presentation "Accelerating Python Data Analysis with DuckDB".
 
-Link to a recording of the talk [here](https://www.youtube.com/watch?v=9EL1AEXrybU) 
-Link to my GitHub repo with scripts used for the presentation, along with the PowerPoint slides [here](https://github.com/JustinSmethers/intro-to-duckdb) 
-Link to my GitHub repo with scripts used for the billion row challenge [here](https://github.com/JustinSmethers/billion-row-challenge-python)
+- Link to a recording of the talk [here](https://www.youtube.com/watch?v=9EL1AEXrybU) 
+- Link to my GitHub repo with scripts used for the presentation, along with the PowerPoint slides [here](https://github.com/JustinSmethers/intro-to-duckdb) 
+- Link to my GitHub repo with scripts used for the billion row challenge [here](https://github.com/JustinSmethers/billion-row-challenge-python)
 
 # Intro
 I saw posts floating around talking about the '1 billion row challenge' and decided to try it myself. Initially, I was skeptical that Python could even handle 1 billion rows and I come away thinking 1) it can't but 2) DuckDB can. 
