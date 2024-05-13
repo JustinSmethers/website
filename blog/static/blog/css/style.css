@@ -5,6 +5,30 @@ header {
     padding: 60px 0;
 }
 
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+/* Stack vertically on small screens */
+@media (max-width: 600px) {
+    .social-links {
+        flex-direction: column;
+    }
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    transition: opacity 0.2s ease-in-out; /* Transition for the opacity */
+}
+
+.social-icon:hover {
+    opacity: 0.75; /* Opacity on hover */
+}
+
 .footer {
     position: relative; /* Or remove the position property altogether */
     width: 95%;
@@ -229,6 +253,11 @@ body {
     padding: 40px 100px
 }
 
+.post-content > * {
+    padding-top: 5px; /* Adjust the value as needed */
+    padding-bottom: 5px; /* Adjust the value as needed */
+}
+
 .post-content table {
     width: 40%;
     border-collapse: collapse;
@@ -266,6 +295,7 @@ body {
     color: #007BFF;
     text-decoration: underline;
     font-weight: bold;
+    target: _blank;
 }
 
 

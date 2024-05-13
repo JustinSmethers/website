@@ -27,7 +27,14 @@
             <a class="text-xl text-gray-300" href="/">Justin Smethers</a>
 
             <div class="space-x-4 text-gray-300">
-                <p>I'll add socials here eventually</p>
+                <div class="social-links">
+                    <a href="https://github.com/JustinSmethers" target="_blank">
+                        <img src="{% static 'blog/github-logo-white.png' %}" alt="GitHub" class="social-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/justinsmethers/" target="_blank">
+                        <img src="{% static 'blog/linkedin-logo-blue.png' %}" alt="LinkedIn" class="social-icon">
+                    </a>
+                </div>
             </div>
         </nav>
         <main class="p-6">
@@ -36,7 +43,22 @@
         </main>
 
         <footer class="footer">
-            <p>Copyright (c) 2023 - Justin Smethers</p>
+            <p>Copyright (c) 2024 - Justin Smethers</p>
+            <p>Powered by Django | Repository:</p>
+            <a href="https://github.com/JustinSmethers/website" target="_blank">
+            <img src="{% static 'blog/github-logo-white.png' %}" alt="GitHub" class="social-icon">
+            </a>
         </footer>
     </body>
 </html>
+
+{% block javascript %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('.post-content a');
+        links.forEach(function(link) {
+            link.setAttribute('target', '_blank');
+        });
+    });
+</script>
+{% endblock %}
