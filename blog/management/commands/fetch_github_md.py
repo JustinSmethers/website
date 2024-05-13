@@ -49,6 +49,8 @@ class Command(BaseCommand):
         # Replace local image paths with absolute URLs
         content = self.replace_image_paths(content, dir_path, repo, branch_ref)
 
+        md_file_name = md_file.name.strip(".md")
+        
         # Specify the Markdown extensions to use
         extensions = [
             "markdown.extensions.fenced_code",      # Allows code blocks to be fenced by ``` or ~~~
@@ -81,7 +83,8 @@ class Command(BaseCommand):
             defaults={
                 'description': metadata.get('description', ''),
                 'content': content,
-                'thumbnail': thumbnail_url
+                'thumbnail': thumbnail_url,
+                'post_name': md_file_name
             }
         )
 
