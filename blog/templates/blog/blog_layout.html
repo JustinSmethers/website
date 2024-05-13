@@ -20,7 +20,7 @@
         <!-- Main Content -->
         <div class="col-md-9">
             {% for post in posts %}
-            <a href="{% url 'blog:blog_detail' post.id %}">
+            <a href="{% url 'blog:blog_detail' post.post_name %}">
                 <div class="post-card white-glow">
                     <div class="post-text-content">
                         <h2>{{ post.title }}</h2>
