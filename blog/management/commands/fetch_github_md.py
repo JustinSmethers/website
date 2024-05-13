@@ -1,6 +1,8 @@
 import os
 import sys
 import django
+from django.utils.safestring import mark_safe
+
 
 # Adjust these paths and names to fit your project structure and settings
 project_path = '/home/justin/website'
@@ -16,7 +18,7 @@ django.setup()
 from django.core.management.base import BaseCommand
 from github import Github
 from blog.models import BlogPost
-import markdown2
+import markdown
 import yaml
 import re
 
@@ -47,12 +49,35 @@ class Command(BaseCommand):
         # Replace local image paths with absolute URLs
         content = self.replace_image_paths(content, dir_path, repo, branch_ref)
 
+
+        extensions = [
+            "markdown.extensions.fenced_code",      # Allows code blocks to be fenced by ``` or ~~~
+            "markdown.extensions.tables",           # Allows tables to be created using | and -
+            "markdown.extensions.toc",              # Allows a table of contents to be generated
+            "markdown.extensions.codehilite",       # Allows syntax highlighting
+            "markdown.extensions.extra"             # Adds several miscellaneous extensions
+        ]
+
+        extension_configs = {
+            # "codehilite": {
+            #     'use_pygments': True,
+            #     'css_class': 'language-python'
+            #     # 'css_class': 'codehilite',
+            #     # 'pygments_style': 'github-dark',
+            #     # 'noclasses': True
+            # },
+        }
+
+        md = markdown.Markdown(extensions=extensions, extension_configs=extension_configs)
+
+        content = mark_safe(md.convert(content))
+
         BlogPost.objects.update_or_create(
             title=metadata['title'],
             defaults={
                 'description': metadata.get('description', ''),
-                'content': markdown2.markdown(content),
-                'thumbnail': thumbnail_url,
+                'content': content,
+                'thumbnail': thumbnail_url
             }
         )
 
