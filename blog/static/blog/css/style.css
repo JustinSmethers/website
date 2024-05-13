@@ -5,6 +5,30 @@ header {
     padding: 60px 0;
 }
 
+.social-links {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+/* Stack vertically on small screens */
+@media (max-width: 600px) {
+    .social-links {
+        flex-direction: column;
+    }
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    transition: opacity 0.2s ease-in-out; /* Transition for the opacity */
+}
+
+.social-icon:hover {
+    opacity: 0.75; /* Opacity on hover */
+}
+
 .footer {
     position: relative; /* Or remove the position property altogether */
     width: 95%;
@@ -219,15 +243,63 @@ body {
 /* Content area styles */
 .post-content {
     background-color: #333;
-    font-size: 16px; /* Readable font size for content */
+    font-size: 16px; /* Readable font size for content */ 
     color: #fff;
     height: auto;
     display: block;
-    border-top: 1px solid #fff; /* Adds a line above the content */
+    border-top: 1px solid #fff; /* Adds a line above the content */ 
     margin-top: 10px; /* Adds some space between the post content and the header bar */
     margin: 0 auto; /* Centers the content */
     padding: 40px 100px
 }
+
+.post-content > * {
+    padding-top: 5px; /* Adjust the value as needed */
+    padding-bottom: 5px; /* Adjust the value as needed */
+}
+
+.post-content table {
+    width: 40%;
+    border-collapse: collapse;
+}
+.post-content th, .post-content td {
+    border: 1px solid #fff; /* White borders for visibility */
+    padding: 8px; /* Padding inside cells */
+    text-align: left; /* Align text to the left */
+}
+.post-content th {
+    background-color: #444; /* Slightly darker than post background */
+}
+
+.post-content pre, .post-content code {
+    background-color: #404040; /* Darker background for code blocks */
+    color: #f8f8f2; /* Light color for code */
+    padding: 10px; /* Padding inside code blocks */
+    display: block;
+    overflow-x: auto; /* Allows horizontal scrolling for long lines */
+}
+.post-content code {
+    white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
+}
+
+.post-content ul {
+    list-style-type: disc; /* Default style for unordered lists */
+    margin-left: 20px; /* Adds indentation to lists */
+}
+
+.post-content li {
+    margin-bottom: 5px; /* Adds space between list items */
+}
+
+.post-content a {
+    color: #007BFF;
+    text-decoration: underline;
+    font-weight: bold;
+    target: _blank;
+}
+
+
+
 
 /* Glow effect for block elements */
 .white-glow {

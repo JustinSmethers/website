@@ -1,8 +1,5 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from .models import BlogPost
-from .forms import BlogPostForm
-from django.contrib.auth.decorators import login_required
-import markdown
 
 
 def blog_home(request):
@@ -11,6 +8,6 @@ def blog_home(request):
     return render(request, 'blog/blog_layout.html', {'posts': posts})
 
 def blog_detail(request, post_id):
+    # Fetch the blog post by ID or return a 404 if not found
     post = get_object_or_404(BlogPost, id=post_id)
-    post_content = markdown.markdown(post.content)
-    return render(request, 'blog/blog_detail.html', {'post': post, 'content': post_content})
+    return render(request, 'blog/blog_detail.html', {'post': post, 'content': post.content})
