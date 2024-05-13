@@ -217,17 +217,53 @@ body {
 }
 
 /* Content area styles */
-.post-content {
+/* .post-content {
     background-color: #333;
-    font-size: 16px; /* Readable font size for content */
+    font-size: 16px; /* Readable font size for content 
     color: #fff;
     height: auto;
     display: block;
-    border-top: 1px solid #fff; /* Adds a line above the content */
-    margin-top: 10px; /* Adds some space between the post content and the header bar */
-    margin: 0 auto; /* Centers the content */
+    border-top: 1px solid #fff; /* Adds a line above the content 
+    margin-top: 10px; /* Adds some space between the post content and the header bar 
+    margin: 0 auto; /* Centers the content 
     padding: 40px 100px
 }
+ */
+
+ .post-content {
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    padding: 40px; /* Adjusted for responsiveness */
+    margin: 20px auto; /* Adjusted to add vertical spacing */
+    border-top: 1px solid #fff;
+}
+
+.post-content table {
+    width: 40%;
+    border-collapse: collapse;
+}
+.post-content th, .post-content td {
+    border: 1px solid #fff; /* White borders for visibility */
+    padding: 8px; /* Padding inside cells */
+    text-align: left; /* Align text to the left */
+}
+.post-content th {
+    background-color: #444; /* Slightly darker than post background */
+}
+
+.post-content pre, .post-content code {
+    background-color: #404040; /* Darker background for code blocks */
+    color: #f8f8f2; /* Light color for code */
+    padding: 10px; /* Padding inside code blocks */
+    display: block;
+    overflow-x: auto; /* Allows horizontal scrolling for long lines */
+}
+.post-content code {
+    white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
+}
+
+
 
 /* Glow effect for block elements */
 .white-glow {
