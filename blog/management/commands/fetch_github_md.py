@@ -49,15 +49,17 @@ class Command(BaseCommand):
         # Replace local image paths with absolute URLs
         content = self.replace_image_paths(content, dir_path, repo, branch_ref)
 
-
+        # Specify the Markdown extensions to use
         extensions = [
             "markdown.extensions.fenced_code",      # Allows code blocks to be fenced by ``` or ~~~
             "markdown.extensions.tables",           # Allows tables to be created using | and -
             "markdown.extensions.toc",              # Allows a table of contents to be generated
             "markdown.extensions.codehilite",       # Allows syntax highlighting
+            "markdown.extensions.sane_lists",       # Allows lists to be created without preceding blank lines
             "markdown.extensions.extra"             # Adds several miscellaneous extensions
         ]
 
+        # Specify the configuration for each extension
         extension_configs = {
             # "codehilite": {
             #     'use_pygments': True,
@@ -68,8 +70,10 @@ class Command(BaseCommand):
             # },
         }
 
+        # Create a Markdown instance
         md = markdown.Markdown(extensions=extensions, extension_configs=extension_configs)
 
+        # Convert the Markdown content to HTML
         content = mark_safe(md.convert(content))
 
         BlogPost.objects.update_or_create(
