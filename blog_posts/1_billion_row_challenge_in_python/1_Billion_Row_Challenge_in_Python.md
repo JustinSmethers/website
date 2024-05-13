@@ -177,7 +177,7 @@ Below is a table with the number of rows processed on a particular run, and how 
 
 ### Results - Visualized
 Below is an image of a chart I made for the presentation comparing the time elapsed vs number of rows processed for each library
-![[brc_results_visualized.png]]
+![Line chart with 'Rows Processed (billions) on the horizontal axis and 'time elapsed (seconds)' on the horizontal axis comparing the library performances](brc_results_visualized.png "CSV Processing Time Compared")
 # Conclusion
 DuckDB was far and away the fastest tool for processing massive CSV files, but I want to note 2 things:
 
