@@ -26,7 +26,6 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
-        ssh-add ~/.ssh/id_rsa
 
     - name: Run Refresh Command
       run: ssh $SERVER_USER@$SERVER_IP "cd $PROJECT_PATH && source $VENV_PATH/bin/activate && python3 manage.py refresh-blog"
