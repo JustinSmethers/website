@@ -1,4 +1,4 @@
-name: Deploy on Push
+name: Refresh Posts on Push
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     env:
       SSH_PRIVATE_KEY: ${{ secrets.GH_ACTIONS }}
       SERVER_IP: ${{ secrets.SERVER_IP }}
-      SERVER_USER: github_actions
+      SERVER_USER: ${{ secrets.USER }}
       PROJECT_PATH: /home/website
       VENV_PATH: venv
 
