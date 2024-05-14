@@ -1,0 +1,31 @@
+name: Refresh Posts on Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.GH_ACTIONS }}
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      SERVER_USER: ${{ secrets.USER }}
+      PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+      VENV_PATH: venv
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+
+    - name: Run Refresh Command
+      run: ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "cd $PROJECT_PATH && source $VENV_PATH/bin/activate && python3 manage.py refresh_blog"
