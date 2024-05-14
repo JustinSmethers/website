@@ -28,4 +28,4 @@ jobs:
         ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
 
     - name: Run Refresh Command
-      run: ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "cd $PROJECT_PATH && source $VENV_PATH/bin/activate && python3 manage.py refresh-blog"
+      run: ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "cd $PROJECT_PATH && source $VENV_PATH/bin/activate && python3 manage.py refresh_blog"
