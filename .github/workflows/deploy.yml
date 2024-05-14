@@ -13,7 +13,7 @@ jobs:
       SSH_PRIVATE_KEY: ${{ secrets.GH_ACTIONS }}
       SERVER_IP: ${{ secrets.SERVER_IP }}
       SERVER_USER: ${{ secrets.USER }}
-      PROJECT_PATH: /home/website
+      PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
       VENV_PATH: venv
 
     steps:
