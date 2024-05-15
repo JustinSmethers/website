@@ -1,3 +1,8 @@
+---
+title: Sentiment Analysis Using Ollama
+description: Exploring the ollama-python package to analyze text data
+thumbnail: ollama-logo.png
+---
 # ---- This post is a work in progress ----
 
 # Intro
