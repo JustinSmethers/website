@@ -6,28 +6,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <div class="row">
-        <!-- Sidebar -->
-        <div class="col-md-3 sidebar">
+<div class="centered-content">
+    <div class="flex-container">
+        <!-- Top bar -->
+        <div class="top-bar">
             <div class="sidebar-image">
-                <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="GitHub Profile Image" class="img-fluid mb-3">
+                <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="GitHub Profile Image" class="img-fluid">
             </div>
-            <h1>Hi, I'm Justin.</h1>
-            <p><br>For the last few years, I've worked in data analytics and data engineering. This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occassional breakthroughs.<br><br></p>
+            <div class="top-bar-text">
+                <p>I'm Justin. <br><br>This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occassional breakthroughs. Mostly about data.</p>
+            </div>
         </div>
 
         <!-- Main Content -->
-        <div class="col-md-9">
+        <div class="posts">
             {% for post in posts %}
             <a href="{% url 'blog:blog_detail' post.post_name %}">
                 <div class="post-card white-glow">
-                    <div class="post-text-content">
-                        <h2>{{ post.title }}</h2>
-                        <p>{{ post.description }}</p>
-                    </div>
-                    <div class="post-image-container">
-                        <img src="{{ post.thumbnail }}" alt="Thumbnail">
+                    <div class="post-content-wrapper">
+                        <div class="post-text-content">
+                            <h2>{{ post.title }}</h2>
+                            <p>{{ post.description }}</p>
+                        </div>
+                        <div class="post-image-container">
+                            <img src="{{ post.thumbnail }}" alt="Thumbnail">
+                        </div>
                     </div>
                 </div>
             </a>
