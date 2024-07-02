@@ -47,291 +47,30 @@ body {
 
 
 
+:root {
+    --tablet-width: 768px;
+    --mobile-s-width: 320px;
+    --mobile-m-width: 375px;
+    --mobile-l-width: 425px;
+    --laptop-width: 1024px;
 
+    --mobile-s-card-width: 270px;
+    --mobile-m-card-width: 325px;
+    --mobile-l-card-width: 375px;
+    --tablet-card-width: 710px;
+    --laptop-card-width: 1000px;
 
+    --mobile-s-filter-width: 374.98px;
+    --mobile-m-filter-width: 424.98px;
+    --mobile-l-filter-width: 479.98px;
+    --tablet-filter-width: 767.98px;
+    --desktop-filter-width: 768.02px;
 
-@media (max-width: 767.98px) {
-    .centered-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .top-bar {
-        display: flex;
-        background-color: #333;
-        color: #fff;
-        justify-content: space-between;
-        margin: 30px 0;
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        align-items: center;
-        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
-        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
-        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
-        box-sizing: border-box;
-        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
-        /* margin-bottom: 30px; Adds space below each card. Adjust as desired. */
-    }
-
-    .sidebar-image img {
-        display: flex; /* This makes the image center inside the container */
-        align-items: center;
-        justify-content: center;
-        border-radius: 480px; /* Rounded corners for thumbnail */
-        max-width: 220px; /* Thumbnail width */
-        height: 220px; /* Thumbnail height */
-        border-radius: 50%;
-        margin-top: 0px;
-        margin-bottom: 0px;
-        overflow: hidden;
-    }
-
-    .top-bar-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 1;  /* Takes up the remaining space in the .post-card */
-        padding-right: 20px;
-        padding-left: 20px;
-        vertical-align: center;
-        /* height: 100%; Takes up the full height of the post card */
-    }
-
-
-    .sidebar h1, .sidebar h2, .sidebar p {
-        text-align: left;
-        width: 100%;
-    }
-
-    .post-card a {
-        display: block;
-        background-color: #333;
-        width: 100%;
-        height: 100%;
-        text-decoration: none; /* removes the underline from links */
-        color: inherit; /* ensures the link inherits the color from its parent */
-    }
-
-    .post-card:hover {
-        background-color: #555; /* change to your preferred color */
-        cursor: pointer; /* indicates an actionable item */
-    }
-
-    /* Larger header size for title */
-    .post-card h2 {
-        font-size: 24px;
-        color: #fff;
-        font-weight: bold;
-        margin-bottom: 0; /* Adjust so that only the next element (description) controls the spacing */
-    }
-
-    .post-card p { /* Assuming the description is wrapped in a <p> tag */
-        margin-top: 15px;
-        margin-bottom: 0; /* No bottom margin so only the footer controls the spacing */
-    }
-
-    .post-card {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 400px;
-        background-color: #333;
-        color: #fff;
-        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
-        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
-        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
-        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
-        margin-bottom: 30px; /* Adds space below each card. Adjust as desired. */
-    }
-
-    .post-content-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .post-text-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .post-image-container {
-        display: flex; /* This makes the image center inside the container */
-        align-items: center;
-        justify-content: center;
-        margin-top: 15px;
-        width: 250px;
-        height: 200px; /* Ensures it fills the full height of the post card */
-        overflow: hidden;
-        border-radius: 8px;
-    }
-
-
-
-
-
-    /* BLOG_DETAIL */
-    /* General blog post container styles */
-    .blog-post-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .back-button {
-        position: relative;
-        top: -85px;
-        left: -10px;
-        display: inline-block; /* Allows width and height to be set */
-        padding: 5px 10px; /* Size of the button */
-        background-color: #333; /* Button color */
-        color: #fff; /* Text color */
-        text-decoration: none; /* Remove underline from link */
-        border-radius: 5px; /* Rounded corners */
-        outline: none;
-        transition: background-color 0.3s; /* Smooth transition for hover effect */
-        margin: 10px auto; /* Centers the button */
-    }
-
-    .back-button:hover, .back-button:focus {
-        text-decoration: none;
-        outline: none;
-        background-color: #444; /* Slightly lighter on hover */
-    }
-
-    .back-button:hover {
-        background-color: #444; /* Slightly lighter on hover */
-    }
-
-    .blog-post {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #333; /* Change to match your desired background color */
-        color: #333;
-        border: 1px solid #ccc; /* Optional border */
-        border-radius: 8px; /* Rounded corners */
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        margin-top: 50px;
-    }
-
-    /* Header container styles */
-    .header-container {
-        flex-direction: column;
-        background-color: #333; /* Change to match your desired background color */
-        display: flex;
-        align-items: center;
-        border-radius: 28px; /* Rounded corners */
-        margin-bottom: 10px; /* Space between header and content */
-        margin-top: -60px;
-    }
-
-    /* Thumbnail styles */
-    .thumbnail {
-        border-radius: 480px; /* Rounded corners for thumbnail */
-        width: 250px; /* Thumbnail width */
-        height: 250px; /* Thumbnail height */
-        object-fit: cover; /* Ensures the image covers the area nicely */
-        margin-right: 20px; /* Space between thumbnail and text */
-        margin: 10px;
-    }
-
-    /* Title and description styles */
-    .header-text {
-        flex-grow: 1; /* Take up remaining space */
-    }
-
-    .post-title {
-        font-size: 48px;
-        color: #ffffff; /* or any other color you prefer */
-        font-weight: bold; /* Makes the text bold */
-    }
-
-    .post-description {
-        font-size: 20px; /* Smaller font for the description */
-        color: #fff; /* Lighter color for the description */
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-
-    .divider {
-        border: none; /* Remove default border */
-        height: 1px; /* Set the height of the line */
-        background-color: #fff; /* Set the color of the line */
-        margin: 0; /* Adjust margin as needed */
-    }
-
-    /* Content area styles */
-    .post-content {
-        background-color: #333;
-        font-size: 16px; /* Readable font size for content */ 
-        color: #fff;
-        height: auto;
-        display: block;
-        border-top: 1px solid #fff; /* Adds a line above the content */ 
-        margin-top: 10px; /* Adds some space between the post content and the header bar */
-        margin: 0 auto; /* Centers the content */
-        width: 100%;
-        padding: 40px 0px
-    }
-
-    .post-content > * {
-        padding-top: 5px; /* Adjust the value as needed */
-        padding-bottom: 5px; /* Adjust the value as needed */
-    }
-
-    .post-content table {
-        width: 40%;
-        border-collapse: collapse;
-    }
-    .post-content th, .post-content td {
-        border: 1px solid #fff; /* White borders for visibility */
-        padding: 8px; /* Padding inside cells */
-        text-align: left; /* Align text to the left */
-    }
-    .post-content th {
-        background-color: #444; /* Slightly darker than post background */
-    }
-
-    .post-content pre, .post-content code {
-        background-color: #404040; /* Darker background for code blocks */
-        color: #f8f8f2; /* Light color for code */
-        padding: 10px; /* Padding inside code blocks */
-        display: block;
-        overflow-x: auto; /* Allows horizontal scrolling for long lines */
-    }
-    .post-content code {
-        white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
-    }
-
-    .post-content ul {
-        list-style-type: disc; /* Default style for unordered lists */
-        margin-left: 20px; /* Adds indentation to lists */
-    }
-
-    .post-content li {
-        margin-bottom: 5px; /* Adds space between list items */
-    }
-
-    .post-content a {
-        color: #007BFF;
-        text-decoration: underline;
-        font-weight: bold;
-        target: _blank;
-    }
-
+    --offset: 30px;
 }
 
-
-
-/* Media query for larger screens (desktop) */
-@media (min-width: 768px) {
+/* desktop */
+@media (min-width: 1024px) {
     .centered-content {
         display: flex;
         justify-content: center;
@@ -608,10 +347,1210 @@ body {
 
 }
 
+/* tablet */
+@media (max-width: 1023.98px) {
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: var(--tablet-card-width);
+    }
+
+    .top-bar {
+        display: flex;
+        background-color: #333;
+        color: #fff;
+        justify-content: space-between;
+        margin: 30px 0;
+        width: 100%;
+        max-width: var(--tablet-card-width);
+        height: auto;
+        align-items: center;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-sizing: border-box;
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        /* margin-bottom: 30px; Adds space below each card. Adjust as desired. */
+    }
+
+    .sidebar-image img {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        max-width: calc(var(--tablet-card-width) / 2); /* Thumbnail width */
+        height: calc(var(--tablet-card-width) / 2); /* Thumbnail height */
+        border-radius: 50%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        overflow: hidden;
+    }
+
+    /* Flex container to hold the two sections */
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 30px;
+        width: 100%; /* Adjust width as needed */
+        max-width: var(--tablet-card-width); /* Maximum width for larger screens */
+        justify-content: center;
+        vertical-align: top;
+    }
+
+    .top-bar-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;  /* Takes up the remaining space in the .post-card */
+        padding-right: 20px;
+        padding-left: 20px;
+        vertical-align: center;
+        /* height: 100%; Takes up the full height of the post card */
+    }
+
+
+    .sidebar h1, .sidebar h2, .sidebar p {
+        text-align: left;
+        width: 100%;
+    }
+
+    .post-card a {
+        display: block;
+        background-color: #333;
+        width: 100%;
+        height: 100%;
+        text-decoration: none; /* removes the underline from links */
+        color: inherit; /* ensures the link inherits the color from its parent */
+    }
+
+    .post-card:hover {
+        background-color: #555; /* change to your preferred color */
+        cursor: pointer; /* indicates an actionable item */
+    }
+
+    /* Larger header size for title */
+    .post-card h2 {
+        font-size: 24px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 0; /* Adjust so that only the next element (description) controls the spacing */
+    }
+
+    .post-card p { /* Assuming the description is wrapped in a <p> tag */
+        margin-top: 15px;
+        margin-bottom: 0; /* No bottom margin so only the footer controls the spacing */
+    }
+
+    .posts {
+        display: flex; 
+        flex-direction: column; /* Align content vertically */
+        align-items: center; /* Align items to the center */
+        max-width: var(--tablet-card-width); /* Adjust the width as needed */
+        width: 100%; /* Full width */
+    }
+
+    .post-card {
+        display: flex;
+        width: 100%;
+        max-width: var(--tablet-card-width);
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        margin-bottom: 30px; /* Adds space below each card. Adjust as desired. */
+    }
+
+    .post-content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .post-text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-image-container {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: calc(var(--tablet-card-width) / 2);
+        height: calc(var(--tablet-card-width) / 2); /* Ensures it fills the full height of the post card */
+        overflow: hidden;
+        border-radius: 8px;
+    }
 
 
 
 
+
+    /* BLOG_DETAIL */
+    /* General blog post container styles */
+    .blog-post-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .back-button {
+        position: relative;
+        top: -85px;
+        left: -10px;
+        display: inline-block; /* Allows width and height to be set */
+        padding: 5px 10px; /* Size of the button */
+        background-color: #333; /* Button color */
+        color: #fff; /* Text color */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Rounded corners */
+        outline: none;
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+        margin: 10px auto; /* Centers the button */
+    }
+
+    .back-button:hover, .back-button:focus {
+        text-decoration: none;
+        outline: none;
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .back-button:hover {
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .blog-post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #333; /* Change to match your desired background color */
+        color: #333;
+        border: 1px solid #ccc; /* Optional border */
+        border-radius: 8px; /* Rounded corners */
+        width: 100%;
+        max-width: var(--tablet-card-width);
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    /* Header container styles */
+    .header-container {
+        flex-direction: column;
+        background-color: #333; /* Change to match your desired background color */
+        display: flex;
+        align-items: center;
+        border-radius: 28px; /* Rounded corners */
+        margin-bottom: 10px; /* Space between header and content */
+        margin-top: -60px;
+    }
+
+    /* Thumbnail styles */
+    .thumbnail {
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        width: 250px; /* Thumbnail width */
+        height: 250px; /* Thumbnail height */
+        object-fit: cover; /* Ensures the image covers the area nicely */
+        margin-right: 20px; /* Space between thumbnail and text */
+        margin: 10px;
+    }
+
+    /* Title and description styles */
+    .header-text {
+        flex-grow: 1; /* Take up remaining space */
+    }
+
+    .post-title {
+        font-size: 48px;
+        color: #ffffff; /* or any other color you prefer */
+        font-weight: bold; /* Makes the text bold */
+    }
+
+    .post-description {
+        font-size: 20px; /* Smaller font for the description */
+        color: #fff; /* Lighter color for the description */
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .divider {
+        border: none; /* Remove default border */
+        height: 1px; /* Set the height of the line */
+        background-color: #fff; /* Set the color of the line */
+        margin: 0; /* Adjust margin as needed */
+    }
+
+    /* Content area styles */
+    .post-content {
+        background-color: #333;
+        font-size: 16px; /* Readable font size for content */ 
+        color: #fff;
+        height: auto;
+        display: block;
+        border-top: 1px solid #fff; /* Adds a line above the content */ 
+        margin-top: 10px; /* Adds some space between the post content and the header bar */
+        margin: 0 auto; /* Centers the content */
+        width: 100%;
+        padding: 40px 0px
+    }
+
+    .post-content > * {
+        padding-top: 5px; /* Adjust the value as needed */
+        padding-bottom: 5px; /* Adjust the value as needed */
+    }
+
+    .post-content table {
+        width: 40%;
+        border-collapse: collapse;
+    }
+    .post-content th, .post-content td {
+        border: 1px solid #fff; /* White borders for visibility */
+        padding: 8px; /* Padding inside cells */
+        text-align: left; /* Align text to the left */
+    }
+    .post-content th {
+        background-color: #444; /* Slightly darker than post background */
+    }
+
+    .post-content pre, .post-content code {
+        background-color: #404040; /* Darker background for code blocks */
+        color: #f8f8f2; /* Light color for code */
+        padding: 10px; /* Padding inside code blocks */
+        display: block;
+        overflow-x: auto; /* Allows horizontal scrolling for long lines */
+    }
+    .post-content code {
+        white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
+    }
+
+    .post-content ul {
+        list-style-type: disc; /* Default style for unordered lists */
+        margin-left: 20px; /* Adds indentation to lists */
+    }
+
+    .post-content li {
+        margin-bottom: 5px; /* Adds space between list items */
+    }
+
+    .post-content a {
+        color: #007BFF;
+        text-decoration: underline;
+        font-weight: bold;
+        target: _blank;
+    }
+
+}
+
+/* mobile-l */
+@media (max-width: 767.98px) {
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: var(--mobile-l-card-width);
+    }
+
+    .top-bar {
+        display: flex;
+        background-color: #333;
+        color: #fff;
+        justify-content: space-between;
+        margin: 30px 0;
+        width: 100%;
+        max-width: var(--mobile-l-card-width);
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-sizing: border-box;
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        /* margin-bottom: 30px; Adds space below each card. Adjust as desired. */
+    }
+
+    .sidebar-image img {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        max-width: calc(var(--mobile-l-card-width)- var(--offset)); /* Thumbnail width */
+        height: calc(var(--mobile-l-card-width) - var(--offset)); /* Thumbnail height */
+        border-radius: 50%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        overflow: hidden;
+    }
+
+    /* Flex container to hold the two sections */
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 30px;
+        width: 100%; /* Adjust width as needed */
+        max-width: var(--mobile-l-card-width); /* Maximum width for larger screens */
+        justify-content: center;
+        vertical-align: top;
+    }
+
+    .top-bar-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;  /* Takes up the remaining space in the .post-card */
+        padding-right: 20px;
+        padding-left: 20px;
+        vertical-align: center;
+        /* height: 100%; Takes up the full height of the post card */
+    }
+
+
+    .sidebar h1, .sidebar h2, .sidebar p {
+        text-align: left;
+        width: 100%;
+    }
+
+    .post-card a {
+        display: block;
+        background-color: #333;
+        width: 100%;
+        height: 100%;
+        text-decoration: none; /* removes the underline from links */
+        color: inherit; /* ensures the link inherits the color from its parent */
+    }
+
+    .post-card:hover {
+        background-color: #555; /* change to your preferred color */
+        cursor: pointer; /* indicates an actionable item */
+    }
+
+    /* Larger header size for title */
+    .post-card h2 {
+        font-size: 24px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 0; /* Adjust so that only the next element (description) controls the spacing */
+    }
+
+    .post-card p { /* Assuming the description is wrapped in a <p> tag */
+        margin-top: 15px;
+        margin-bottom: 0; /* No bottom margin so only the footer controls the spacing */
+    }
+
+    .posts {
+        display: flex; 
+        flex-direction: column; /* Align content vertically */
+        align-items: center; /* Align items to the center */
+        max-width: var(--mobile-l-card-width); /* Adjust the width as needed */
+        width: 100%; /* Full width */
+    }
+
+    .post-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: var(--mobile-l-card-width);
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        margin-bottom: 30px; /* Adds space below each card. Adjust as desired. */
+    }
+
+    .post-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .post-text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-image-container {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: calc(var(--mobile-l-card-width) - var(--offset));
+        height: 200px; /* Ensures it fills the full height of the post card */
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+
+
+
+
+    /* BLOG_DETAIL */
+    /* General blog post container styles */
+    .blog-post-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .back-button {
+        position: relative;
+        top: -85px;
+        left: -10px;
+        display: inline-block; /* Allows width and height to be set */
+        padding: 5px 10px; /* Size of the button */
+        background-color: #333; /* Button color */
+        color: #fff; /* Text color */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Rounded corners */
+        outline: none;
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+        margin: 10px auto; /* Centers the button */
+    }
+
+    .back-button:hover, .back-button:focus {
+        text-decoration: none;
+        outline: none;
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .back-button:hover {
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .blog-post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #333; /* Change to match your desired background color */
+        color: #333;
+        border: 1px solid #ccc; /* Optional border */
+        border-radius: 8px; /* Rounded corners */
+        width: 100%;
+        max-width: var(--mobile-l-card-width);
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    /* Header container styles */
+    .header-container {
+        flex-direction: column;
+        background-color: #333; /* Change to match your desired background color */
+        display: flex;
+        align-items: center;
+        border-radius: 28px; /* Rounded corners */
+        margin-bottom: 10px; /* Space between header and content */
+        margin-top: -60px;
+    }
+
+    /* Thumbnail styles */
+    .thumbnail {
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        width: 250px; /* Thumbnail width */
+        height: 250px; /* Thumbnail height */
+        object-fit: cover; /* Ensures the image covers the area nicely */
+        margin-right: 20px; /* Space between thumbnail and text */
+        margin: 10px;
+    }
+
+    /* Title and description styles */
+    .header-text {
+        flex-grow: 1; /* Take up remaining space */
+    }
+
+    .post-title {
+        font-size: 48px;
+        color: #ffffff; /* or any other color you prefer */
+        font-weight: bold; /* Makes the text bold */
+    }
+
+    .post-description {
+        font-size: 20px; /* Smaller font for the description */
+        color: #fff; /* Lighter color for the description */
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .divider {
+        border: none; /* Remove default border */
+        height: 1px; /* Set the height of the line */
+        background-color: #fff; /* Set the color of the line */
+        margin: 0; /* Adjust margin as needed */
+    }
+
+    /* Content area styles */
+    .post-content {
+        background-color: #333;
+        font-size: 16px; /* Readable font size for content */ 
+        color: #fff;
+        height: auto;
+        display: block;
+        border-top: 1px solid #fff; /* Adds a line above the content */ 
+        margin-top: 10px; /* Adds some space between the post content and the header bar */
+        margin: 0 auto; /* Centers the content */
+        width: 100%;
+        padding: 40px 0px
+    }
+
+    .post-content > * {
+        padding-top: 5px; /* Adjust the value as needed */
+        padding-bottom: 5px; /* Adjust the value as needed */
+    }
+
+    .post-content table {
+        width: 40%;
+        border-collapse: collapse;
+    }
+    .post-content th, .post-content td {
+        border: 1px solid #fff; /* White borders for visibility */
+        padding: 8px; /* Padding inside cells */
+        text-align: left; /* Align text to the left */
+    }
+    .post-content th {
+        background-color: #444; /* Slightly darker than post background */
+    }
+
+    .post-content pre, .post-content code {
+        background-color: #404040; /* Darker background for code blocks */
+        color: #f8f8f2; /* Light color for code */
+        padding: 10px; /* Padding inside code blocks */
+        display: block;
+        overflow-x: auto; /* Allows horizontal scrolling for long lines */
+    }
+    .post-content code {
+        white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
+    }
+
+    .post-content ul {
+        list-style-type: disc; /* Default style for unordered lists */
+        margin-left: 20px; /* Adds indentation to lists */
+    }
+
+    .post-content li {
+        margin-bottom: 5px; /* Adds space between list items */
+    }
+
+    .post-content a {
+        color: #007BFF;
+        text-decoration: underline;
+        font-weight: bold;
+        target: _blank;
+    }
+
+}
+
+/* mobile-m */
+@media (max-width: 424.98px) {
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: var(--mobile-m-card-width);
+    }
+
+    .top-bar {
+        display: flex;
+        background-color: #333;
+        color: #fff;
+        justify-content: space-between;
+        margin: 30px 0;
+        width: 100%;
+        max-width: var(--mobile-m-card-width);
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-sizing: border-box;
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        /* margin-bottom: 30px; Adds space below each card. Adjust as desired. */
+    }
+
+    .sidebar-image img {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        max-width: calc(var(--mobile-m-card-width)- var(--offset)); /* Thumbnail width */
+        height: calc(var(--mobile-m-card-width) - var(--offset)); /* Thumbnail height */
+        border-radius: 50%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        overflow: hidden;
+    }
+
+    /* Flex container to hold the two sections */
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 30px;
+        width: 100%; /* Adjust width as needed */
+        max-width: var(--mobile-m-card-width); /* Maximum width for larger screens */
+        justify-content: center;
+        vertical-align: top;
+    }
+
+    .top-bar-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;  /* Takes up the remaining space in the .post-card */
+        padding-right: 20px;
+        padding-left: 20px;
+        vertical-align: center;
+        /* height: 100%; Takes up the full height of the post card */
+    }
+
+
+    .sidebar h1, .sidebar h2, .sidebar p {
+        text-align: left;
+        width: 100%;
+    }
+
+    .post-card a {
+        display: block;
+        background-color: #333;
+        width: 100%;
+        height: 100%;
+        text-decoration: none; /* removes the underline from links */
+        color: inherit; /* ensures the link inherits the color from its parent */
+    }
+
+    .post-card:hover {
+        background-color: #555; /* change to your preferred color */
+        cursor: pointer; /* indicates an actionable item */
+    }
+
+    /* Larger header size for title */
+    .post-card h2 {
+        font-size: 24px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 0; /* Adjust so that only the next element (description) controls the spacing */
+    }
+
+    .post-card p { /* Assuming the description is wrapped in a <p> tag */
+        margin-top: 15px;
+        margin-bottom: 0; /* No bottom margin so only the footer controls the spacing */
+    }
+
+    .posts {
+        display: flex; 
+        flex-direction: column; /* Align content vertically */
+        align-items: center; /* Align items to the center */
+        max-width: var(--mobile-m-card-width); /* Adjust the width as needed */
+        width: 100%; /* Full width */
+    }
+
+    .post-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: var(--mobile-m-card-width);
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        margin-bottom: 30px; /* Adds space below each card. Adjust as desired. */
+    }
+
+    .post-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .post-text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-image-container {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: calc(var(--mobile-m-card-width) - var(--offset));
+        height: 200px; /* Ensures it fills the full height of the post card */
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+
+
+
+
+    /* BLOG_DETAIL */
+    /* General blog post container styles */
+    .blog-post-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .back-button {
+        position: relative;
+        top: -85px;
+        left: -10px;
+        display: inline-block; /* Allows width and height to be set */
+        padding: 5px 10px; /* Size of the button */
+        background-color: #333; /* Button color */
+        color: #fff; /* Text color */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Rounded corners */
+        outline: none;
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+        margin: 10px auto; /* Centers the button */
+    }
+
+    .back-button:hover, .back-button:focus {
+        text-decoration: none;
+        outline: none;
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .back-button:hover {
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .blog-post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #333; /* Change to match your desired background color */
+        color: #333;
+        border: 1px solid #ccc; /* Optional border */
+        border-radius: 8px; /* Rounded corners */
+        width: 100%;
+        max-width: var(--mobile-m-card-width);
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    /* Header container styles */
+    .header-container {
+        flex-direction: column;
+        background-color: #333; /* Change to match your desired background color */
+        display: flex;
+        align-items: center;
+        border-radius: 28px; /* Rounded corners */
+        margin-bottom: 10px; /* Space between header and content */
+        margin-top: -60px;
+    }
+
+    /* Thumbnail styles */
+    .thumbnail {
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        width: 250px; /* Thumbnail width */
+        height: 250px; /* Thumbnail height */
+        object-fit: cover; /* Ensures the image covers the area nicely */
+        margin-right: 20px; /* Space between thumbnail and text */
+        margin: 10px;
+    }
+
+    /* Title and description styles */
+    .header-text {
+        flex-grow: 1; /* Take up remaining space */
+    }
+
+    .post-title {
+        font-size: 48px;
+        color: #ffffff; /* or any other color you prefer */
+        font-weight: bold; /* Makes the text bold */
+    }
+
+    .post-description {
+        font-size: 20px; /* Smaller font for the description */
+        color: #fff; /* Lighter color for the description */
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .divider {
+        border: none; /* Remove default border */
+        height: 1px; /* Set the height of the line */
+        background-color: #fff; /* Set the color of the line */
+        margin: 0; /* Adjust margin as needed */
+    }
+
+    /* Content area styles */
+    .post-content {
+        background-color: #333;
+        font-size: 16px; /* Readable font size for content */ 
+        color: #fff;
+        height: auto;
+        display: block;
+        border-top: 1px solid #fff; /* Adds a line above the content */ 
+        margin-top: 10px; /* Adds some space between the post content and the header bar */
+        margin: 0 auto; /* Centers the content */
+        width: 100%;
+        padding: 40px 0px
+    }
+
+    .post-content > * {
+        padding-top: 5px; /* Adjust the value as needed */
+        padding-bottom: 5px; /* Adjust the value as needed */
+    }
+
+    .post-content table {
+        width: 40%;
+        border-collapse: collapse;
+    }
+    .post-content th, .post-content td {
+        border: 1px solid #fff; /* White borders for visibility */
+        padding: 8px; /* Padding inside cells */
+        text-align: left; /* Align text to the left */
+    }
+    .post-content th {
+        background-color: #444; /* Slightly darker than post background */
+    }
+
+    .post-content pre, .post-content code {
+        background-color: #404040; /* Darker background for code blocks */
+        color: #f8f8f2; /* Light color for code */
+        padding: 10px; /* Padding inside code blocks */
+        display: block;
+        overflow-x: auto; /* Allows horizontal scrolling for long lines */
+    }
+    .post-content code {
+        white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
+    }
+
+    .post-content ul {
+        list-style-type: disc; /* Default style for unordered lists */
+        margin-left: 20px; /* Adds indentation to lists */
+    }
+
+    .post-content li {
+        margin-bottom: 5px; /* Adds space between list items */
+    }
+
+    .post-content a {
+        color: #007BFF;
+        text-decoration: underline;
+        font-weight: bold;
+        target: _blank;
+    }
+
+}
+
+/* mobile-s */
+@media (max-width: 374.98px) {
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: var(--mobile-s-card-width);
+    }
+
+    .top-bar {
+        display: flex;
+        background-color: #333;
+        color: #fff;
+        justify-content: space-between;
+        margin: 30px 0;
+        width: 100%;
+        max-width: var(--mobile-s-card-width);
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-sizing: border-box;
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        /* margin-bottom: 30px; Adds space below each card. Adjust as desired. */
+    }
+
+    .sidebar-image img {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        max-width: calc(var(--mobile-s-card-width)- var(--offset)); /* Thumbnail width */
+        height: calc(var(--mobile-s-card-width) - var(--offset)); /* Thumbnail height */
+        border-radius: 50%;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        overflow: hidden;
+    }
+
+    /* Flex container to hold the two sections */
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        column-gap: 30px;
+        width: 100%; /* Adjust width as needed */
+        max-width: var(--mobile-s-card-width); /* Maximum width for larger screens */
+        justify-content: center;
+        vertical-align: top;
+    }
+
+    .top-bar-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;  /* Takes up the remaining space in the .post-card */
+        padding-right: 20px;
+        padding-left: 20px;
+        vertical-align: center;
+        /* height: 100%; Takes up the full height of the post card */
+    }
+
+
+    .sidebar h1, .sidebar h2, .sidebar p {
+        text-align: left;
+        width: 100%;
+    }
+
+    .post-card a {
+        display: block;
+        background-color: #333;
+        width: 100%;
+        height: 100%;
+        text-decoration: none; /* removes the underline from links */
+        color: inherit; /* ensures the link inherits the color from its parent */
+    }
+
+    .post-card:hover {
+        background-color: #555; /* change to your preferred color */
+        cursor: pointer; /* indicates an actionable item */
+    }
+
+    /* Larger header size for title */
+    .post-card h2 {
+        font-size: 24px;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: 0; /* Adjust so that only the next element (description) controls the spacing */
+    }
+
+    .post-card p { /* Assuming the description is wrapped in a <p> tag */
+        margin-top: 15px;
+        margin-bottom: 0; /* No bottom margin so only the footer controls the spacing */
+    }
+
+    .posts {
+        display: flex; 
+        flex-direction: column; /* Align content vertically */
+        align-items: center; /* Align items to the center */
+        max-width: var(--mobile-s-card-width); /* Adjust the width as needed */
+        width: 100%; /* Full width */
+    }
+
+    .post-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: var(--mobile-s-card-width);
+        background-color: #333;
+        color: #fff;
+        border: 1px solid #dbd8cd; /* Adjust the color and thickness as desired */
+        border-radius: 8px; /* This rounds the corners. Adjust as desired. */
+        padding: 18px; /* Provides some space between the border and the card content. Adjust as desired. */
+        box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow for a lifted effect */
+        margin-bottom: 30px; /* Adds space below each card. Adjust as desired. */
+    }
+
+    .post-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .post-text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-image-container {
+        display: flex; /* This makes the image center inside the container */
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: calc(var(--mobile-s-card-width) - var(--offset));
+        height: 200px; /* Ensures it fills the full height of the post card */
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+
+
+
+
+    /* BLOG_DETAIL */
+    /* General blog post container styles */
+    .blog-post-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .back-button {
+        position: relative;
+        top: -85px;
+        left: -10px;
+        display: inline-block; /* Allows width and height to be set */
+        padding: 5px 10px; /* Size of the button */
+        background-color: #333; /* Button color */
+        color: #fff; /* Text color */
+        text-decoration: none; /* Remove underline from link */
+        border-radius: 5px; /* Rounded corners */
+        outline: none;
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+        margin: 10px auto; /* Centers the button */
+    }
+
+    .back-button:hover, .back-button:focus {
+        text-decoration: none;
+        outline: none;
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .back-button:hover {
+        background-color: #444; /* Slightly lighter on hover */
+    }
+
+    .blog-post {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #333; /* Change to match your desired background color */
+        color: #333;
+        border: 1px solid #ccc; /* Optional border */
+        border-radius: 8px; /* Rounded corners */
+        width: 100%;
+        max-width: var(--mobile-s-card-width);
+        padding: 20px;
+        margin-top: 50px;
+    }
+
+    /* Header container styles */
+    .header-container {
+        flex-direction: column;
+        background-color: #333; /* Change to match your desired background color */
+        display: flex;
+        align-items: center;
+        border-radius: 28px; /* Rounded corners */
+        margin-bottom: 10px; /* Space between header and content */
+        margin-top: -60px;
+    }
+
+    /* Thumbnail styles */
+    .thumbnail {
+        border-radius: 480px; /* Rounded corners for thumbnail */
+        width: 250px; /* Thumbnail width */
+        height: 250px; /* Thumbnail height */
+        object-fit: cover; /* Ensures the image covers the area nicely */
+        margin-right: 20px; /* Space between thumbnail and text */
+        margin: 10px;
+    }
+
+    /* Title and description styles */
+    .header-text {
+        flex-grow: 1; /* Take up remaining space */
+    }
+
+    .post-title {
+        font-size: 48px;
+        color: #ffffff; /* or any other color you prefer */
+        font-weight: bold; /* Makes the text bold */
+    }
+
+    .post-description {
+        font-size: 20px; /* Smaller font for the description */
+        color: #fff; /* Lighter color for the description */
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .divider {
+        border: none; /* Remove default border */
+        height: 1px; /* Set the height of the line */
+        background-color: #fff; /* Set the color of the line */
+        margin: 0; /* Adjust margin as needed */
+    }
+
+    /* Content area styles */
+    .post-content {
+        background-color: #333;
+        font-size: 16px; /* Readable font size for content */ 
+        color: #fff;
+        height: auto;
+        display: block;
+        border-top: 1px solid #fff; /* Adds a line above the content */ 
+        margin-top: 10px; /* Adds some space between the post content and the header bar */
+        margin: 0 auto; /* Centers the content */
+        width: 100%;
+        padding: 40px 0px
+    }
+
+    .post-content > * {
+        padding-top: 5px; /* Adjust the value as needed */
+        padding-bottom: 5px; /* Adjust the value as needed */
+    }
+
+    .post-content table {
+        width: 40%;
+        border-collapse: collapse;
+    }
+    .post-content th, .post-content td {
+        border: 1px solid #fff; /* White borders for visibility */
+        padding: 8px; /* Padding inside cells */
+        text-align: left; /* Align text to the left */
+    }
+    .post-content th {
+        background-color: #444; /* Slightly darker than post background */
+    }
+
+    .post-content pre, .post-content code {
+        background-color: #404040; /* Darker background for code blocks */
+        color: #f8f8f2; /* Light color for code */
+        padding: 10px; /* Padding inside code blocks */
+        display: block;
+        overflow-x: auto; /* Allows horizontal scrolling for long lines */
+    }
+    .post-content code {
+        white-space: pre-wrap; /* Ensures code wraps and respects whitespaces */
+    }
+
+    .post-content ul {
+        list-style-type: disc; /* Default style for unordered lists */
+        margin-left: 20px; /* Adds indentation to lists */
+    }
+
+    .post-content li {
+        margin-bottom: 5px; /* Adds space between list items */
+    }
+
+    .post-content a {
+        color: #007BFF;
+        text-decoration: underline;
+        font-weight: bold;
+        target: _blank;
+    }
+
+}
 
 /* Glow effect for block elements */
 .white-glow {
