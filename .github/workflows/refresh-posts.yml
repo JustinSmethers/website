@@ -1,25 +1,19 @@
-name: Refresh Posts on Push
-
+name: Refresh Blog on Push
 on:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
+  refresh_blog:
     runs-on: ubuntu-latest
-
     env:
       SSH_PRIVATE_KEY: ${{ secrets.GH_ACTIONS }}
       SERVER_IP: ${{ secrets.SERVER_IP }}
       SERVER_USER: ${{ secrets.USER }}
       PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
       VENV_PATH: venv
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
