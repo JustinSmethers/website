@@ -1,0 +1,31 @@
+name: Deploy to Production
+on:
+  workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      SSH_PRIVATE_KEY: ${{ secrets.GH_ACTIONS }}
+      SERVER_IP: ${{ secrets.SERVER_IP }}
+      SERVER_USER: ${{ secrets.USER }}
+      PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+      VENV_PATH: venv
+    steps:
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+    
+    - name: Deploy to server
+      run: |
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "cd $PROJECT_PATH && \
+        git pull origin main && \
+        source $VENV_PATH/bin/activate && \
+        pip install -r requirements.txt && \
+        python manage.py migrate && \
+        python manage.py collectstatic --noinput && \
+        sudo systemctl restart gunicorn && \
+        sudo systemctl restart nginx"
