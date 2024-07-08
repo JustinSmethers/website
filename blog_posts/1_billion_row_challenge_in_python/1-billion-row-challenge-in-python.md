@@ -4,6 +4,9 @@ description: Processing 1 billion rows with various Python packages
 thumbnail: 1brc_thumbnail.webp
 ---
 
+# The 1 Billion Row Challenge in Python
+
+
 # What is this?
 This is a blog post expanding on this project I tried out - the 1 Billion Row Challenge in Python - which I also presented at the Michigan Python May 2024 Meetup group as part of my presentation "Accelerating Python Data Analysis with DuckDB".
 
