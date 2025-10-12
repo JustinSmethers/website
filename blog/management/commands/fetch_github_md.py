@@ -18,6 +18,7 @@ django.setup()
 from django.core.management.base import BaseCommand
 from github import Github
 from blog.models import BlogPost
+from blog.tagging import ALLOWED_TAGS, normalize_and_validate_tags
 import markdown
 import yaml
 import re
@@ -78,13 +79,24 @@ class Command(BaseCommand):
         # Convert the Markdown content to HTML
         content = mark_safe(md.convert(content))
 
+        normalised_tags, invalid_tags = normalize_and_validate_tags(metadata.get('tags'))
+        if invalid_tags:
+            source = getattr(md_file, "path", md_file.name)
+            self.stdout.write(
+                self.style.WARNING(
+                    f"Ignoring disallowed tag(s) {invalid_tags} in '{source}'. "
+                    f"Allowed tags: {', '.join(ALLOWED_TAGS)}"
+                )
+            )
+
         BlogPost.objects.update_or_create(
             title=metadata['title'],
             defaults={
                 'description': metadata.get('description', ''),
                 'content': content,
                 'thumbnail': thumbnail_url,
-                'post_name': md_file_name
+                'post_name': md_file_name,
+                'tags': normalised_tags,
             }
         )
 
