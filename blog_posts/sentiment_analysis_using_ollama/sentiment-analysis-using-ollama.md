@@ -2,6 +2,8 @@
 title: Sentiment Analysis Using Ollama
 description: WIP - Exploring the ollama-python package to analyze text data
 thumbnail: ollama-logo.png
+tags:
+  - wip
 ---
 ### ---- This post is a work in progress ----
 

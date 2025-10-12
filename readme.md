@@ -71,3 +71,23 @@ We're using Pygments for syntax highlighting in the application. Regenerate the 
 ```bash
 uv run python scripts/generate_pygments_css.py
 ```
+
+### Validating Blog Post Tags
+
+Blog post metadata is defined in the YAML front matter at the top of each markdown file in `blog_posts/`. Every post must
+declare a `tags` list using the controlled vocabulary `{post, WIP, talk, notes}` (values are case-insensitive). Tags are
+rendered on the site and drive automated validation.
+
+Run the validation script to confirm all posts use supported tags:
+
+```bash
+uv run python scripts/validate_tags.py
+```
+
+You can integrate the check locally by installing the repository's pre-commit hooks:
+
+```bash
+uv run pre-commit install
+```
+
+The `validate-blog-tags` hook will prevent commits that introduce unsupported tags.

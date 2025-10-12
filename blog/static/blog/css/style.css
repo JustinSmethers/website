@@ -52,6 +52,49 @@ main {
     justify-content: center;
 }
 
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tag-list--detail {
+    margin-top: 12px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background-color: #555;
+    color: #fff;
+}
+
+.tag--post {
+    background-color: #2563eb;
+}
+
+.tag--wip {
+    background-color: #d97706;
+}
+
+.tag--talk {
+    background-color: #059669;
+}
+
+.tag--notes {
+    background-color: #7c3aed;
+}
+
 /* Styles for big ol screens */
 @media (min-width: 1440.03px) {
     .centered-content {
