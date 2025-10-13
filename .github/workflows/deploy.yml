@@ -14,6 +14,12 @@ jobs:
       PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
       VENV_PATH: venv
     steps:
+    - name: Debug deploy env
+      shell: bash
+      run: |
+        set -euo pipefail
+        echo "SERVER_USER='${SERVER_USER:-<unset>}'"
+        echo "SERVER_IP='${SERVER_IP:-<unset>}'"
     - name: Setup SSH
       run: |
         mkdir -p ~/.ssh
