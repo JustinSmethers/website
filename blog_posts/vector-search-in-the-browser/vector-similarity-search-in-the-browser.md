@@ -4,6 +4,7 @@ description: WIP - Exploring vector similarity search in the browser using DuckD
 thumbnail: duckdb-in-the-browser.webp
 tags:
   - wip
+date: 2024-06-05
 ---
 ### ---- This post is a work in progress ----
 

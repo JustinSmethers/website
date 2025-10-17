@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils import timezone
 
 from .tagging import normalize_and_validate_tags
 
@@ -7,7 +8,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     description = models.TextField()
-    date_posted = models.DateTimeField(auto_now_add=True)
+    date_posted = models.DateTimeField(default=timezone.now)
     thumbnail = models.URLField()
     post_name = models.CharField(max_length=200, unique=True)
     tags = models.JSONField(default=list, blank=True)

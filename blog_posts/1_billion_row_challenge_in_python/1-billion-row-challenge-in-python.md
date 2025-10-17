@@ -4,6 +4,7 @@ description: Processing 1 billion rows with various Python packages
 thumbnail: 1brc_thumbnail.webp
 tags:
   - post
+date: 2024-03-24
 ---
 
 # The 1 Billion Row Challenge in Python

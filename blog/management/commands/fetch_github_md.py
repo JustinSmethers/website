@@ -1,6 +1,8 @@
 import os
 import sys
 import django
+from datetime import date, datetime
+from django.utils import timezone
 from django.utils.safestring import mark_safe
 
 
@@ -89,15 +91,21 @@ class Command(BaseCommand):
                 )
             )
 
+        defaults = {
+            'description': metadata.get('description', ''),
+            'content': content,
+            'thumbnail': thumbnail_url,
+            'post_name': md_file_name,
+            'tags': normalised_tags,
+        }
+
+        post_date = self.parse_post_date(metadata.get('date'))
+        if post_date:
+            defaults['date_posted'] = post_date
+
         BlogPost.objects.update_or_create(
             title=metadata['title'],
-            defaults={
-                'description': metadata.get('description', ''),
-                'content': content,
-                'thumbnail': thumbnail_url,
-                'post_name': md_file_name,
-                'tags': normalised_tags,
-            }
+            defaults=defaults
         )
 
     def parse_markdown(self, content):
@@ -128,3 +136,31 @@ class Command(BaseCommand):
         if filename:
             return f'{self.base_url}/{dir_path}/{filename}'
         return ''
+
+    def parse_post_date(self, raw_date):
+        if not raw_date:
+            return None
+
+        if isinstance(raw_date, datetime):
+            candidate = raw_date
+        elif isinstance(raw_date, date):
+            candidate = datetime.combine(raw_date, datetime.min.time())
+        else:
+            raw_value = str(raw_date).strip()
+            try:
+                candidate = datetime.fromisoformat(raw_value)
+            except ValueError:
+                try:
+                    candidate = datetime.strptime(raw_value, "%Y-%m-%d")
+                except ValueError:
+                    self.stdout.write(
+                        self.style.WARNING(
+                            f"Unable to parse date '{raw_value}'. Expected ISO 8601 or YYYY-MM-DD format."
+                        )
+                    )
+                    return None
+
+        if timezone.is_naive(candidate):
+            candidate = timezone.make_aware(candidate)
+
+        return candidate

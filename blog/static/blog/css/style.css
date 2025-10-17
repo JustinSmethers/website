@@ -95,6 +95,12 @@ main {
     background-color: #7c3aed;
 }
 
+.tag--date {
+    background-color: #4b5563;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
 /* Styles for big ol screens */
 @media (min-width: 1440.03px) {
     .centered-content {

@@ -4,6 +4,7 @@ description: How I built a new feature for this website using only my phone, Ope
 thumbnail: code-thumbnail.png
 tags:
   - post
+date: 2025-10-10
 ---
 
 # Building a New Feature Entirely on My Phone with Codex

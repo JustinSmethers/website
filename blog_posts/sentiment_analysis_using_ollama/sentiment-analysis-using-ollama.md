@@ -4,6 +4,7 @@ description: WIP - Exploring the ollama-python package to analyze text data
 thumbnail: ollama-logo.png
 tags:
   - wip
+date: 2024-05-14
 ---
 ### ---- This post is a work in progress ----
 
