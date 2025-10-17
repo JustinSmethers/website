@@ -1,6 +1,6 @@
 ---
 title: Building a new feature entirely on my phone with Codex
-description: How I built a new feature for this website using only my phone, OpenAI's Codex, and GitHub Mobile
+description: How I added post tags for this website using only my phone, OpenAI's Codex, and GitHub Mobile
 thumbnail: code-thumbnail.png
 tags:
   - post
@@ -28,3 +28,5 @@ From there, Codex displayed a button with the GitHub logo allowing me to create 
 In the end, this website now supports tagging posts, and this was a fun glimpse into the world of agentic coding. I didn’t write a line of code and saw this feature completed end-to-end while in the passenger seat of a car. Feels genuinely revolutionary in some ways. If I tightened the development loop (maybe by automating more tests and finding a way for Codex to show me the changes in a dev environment), this would a viable workflow for some serious development work.
 
 Side note: this could make folding phones more useful. Might be nice to review code on a larger screen.
+
+Update: I thought of a simple change to make while lying in bed. I fired up Codex again on my phone, created a new task, and asked it to make the change. It did it perfectly in one go again and I had a PR ready to merge in the morning. Truly wild.
