@@ -1,5 +1,5 @@
 ---
-title: Modern Python Packaging with uv
+title: Modern Python packaging with uv
 description: A meetup talk
 thumbnail: thumbnail.png
 tags:

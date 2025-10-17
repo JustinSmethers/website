@@ -1,5 +1,5 @@
 ---
-title: Fluent Python Notes Part 2 (Chapters 7-10)
+title: Fluent Python notes part 2 (chapters 7-10)
 description: Consolidated notes from Fluent Python part 2 covering chapters 7 through 10
 thumbnail: thumbnail.png
 tags:

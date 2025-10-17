@@ -1,5 +1,5 @@
 ---
-title: Building a New Feature Entirely on My Phone with Codex
+title: Building a new feature entirely on my phone with Codex
 description: How I built a new feature for this website using only my phone, OpenAI's Codex, and GitHub Mobile
 thumbnail: code-thumbnail.png
 tags:

@@ -1,5 +1,5 @@
 ---
-title: Vector Similarity Search in the Browser - With DuckDB!
+title: Vector similarity search in the browser with DuckDB
 description: WIP - Exploring vector similarity search in the browser using DuckDB-WASM
 thumbnail: duckdb-in-the-browser.webp
 tags:

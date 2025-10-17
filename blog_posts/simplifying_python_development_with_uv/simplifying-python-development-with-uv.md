@@ -1,5 +1,5 @@
 ---
-title: Simplifying Python Development with uv
+title: Simplifying Python development with uv
 description: A meetup talk
 thumbnail: thumbnail.png
 tags:

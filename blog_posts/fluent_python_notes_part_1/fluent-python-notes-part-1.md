@@ -1,5 +1,5 @@
 ---
-title: Fluent Python Notes Part 1 (Chapters 1-6)
+title: Fluent Python notes part 1 (chapters 1-6)
 description: Consolidated notes from Fluent Python part 1 covering chapters 1 through 6
 thumbnail: thumbnail.png
 tags:

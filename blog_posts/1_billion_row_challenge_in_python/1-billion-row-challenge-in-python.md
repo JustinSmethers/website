@@ -1,5 +1,5 @@
 ---
-title: 1 Billion Row Challenge in Python
+title: 1 billion row challenge in Python
 description: Processing 1 billion rows with various Python packages
 thumbnail: 1brc_thumbnail.webp
 tags:

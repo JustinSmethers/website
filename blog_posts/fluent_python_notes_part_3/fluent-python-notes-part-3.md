@@ -1,5 +1,5 @@
 ---
-title: Fluent Python Notes Part 3 (Chapter 11)
+title: Fluent Python notes part 3 (chapter 11)
 description: Consolidated notes from Fluent Python part 3 covering chapter 11
 thumbnail: thumbnail.png
 tags:

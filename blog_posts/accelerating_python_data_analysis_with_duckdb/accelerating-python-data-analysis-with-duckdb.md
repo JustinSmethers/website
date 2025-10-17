@@ -1,5 +1,5 @@
 ---
-title: Accelerating Python Data Analysis with DuckDB
+title: Accelerating Python data analysis with DuckDB
 description: A meetup talk
 thumbnail: thumbnail.png
 tags:
