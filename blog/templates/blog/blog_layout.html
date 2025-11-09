@@ -7,17 +7,18 @@
 
 {% block content %}
 <div class="centered-content">
-    <div class="flex-container">
-        <!-- Top bar -->
-        <div class="top-bar">
-            <div class="sidebar-image">
-                <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="GitHub Profile Image" class="img-fluid">
+    <section class="intro-banner">
+        <div class="intro-banner-content">
+            <div class="intro-avatar">
+                <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="GitHub profile picture" class="img-fluid">
             </div>
-            <div class="top-bar-text">
-                <p>I'm Justin. <br><br>This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occassional breakthroughs. Mostly about data.</p>
+            <div class="intro-text">
+                <p>I'm Justin.<br><br>This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occasional breakthroughs. Mostly about data.</p>
             </div>
         </div>
+    </section>
 
+    <div class="flex-container">
         <!-- Main Content -->
         <div class="posts">
             {% for post in posts %}
