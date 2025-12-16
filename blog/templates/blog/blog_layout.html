@@ -7,18 +7,18 @@
 
 {% block content %}
 <div class="centered-content">
-    <div class="flex-container">
-        <!-- Top bar -->
-        <div class="top-bar">
-            <div class="sidebar-image">
-                <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="GitHub Profile Image" class="img-fluid">
-            </div>
-            <div class="top-bar-text">
-                <p>I'm Justin. <br><br>This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occassional breakthroughs. Mostly about data.</p>
+    <div class="content-area">
+        <div class="profile-banner">
+            <div class="profile-banner-content">
+                <div class="profile-avatar">
+                    <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="Justin Smethers profile">
+                </div>
+                <div class="profile-text">
+                    <p class="profile-heading">I'm Justin.</p>
+                    <p class="profile-description">This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occassional breakthroughs. Mostly about data.</p>
+                </div>
             </div>
         </div>
-
-        <!-- Main Content -->
         <div class="posts">
             {% for post in posts %}
             <a href="{% url 'blog:blog_detail' post.post_name %}">
