@@ -1,0 +1,26 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Documentation for developing the Buzzz Django application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustinSmethers/website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustinSmethers/website/issues"
+  },
+  "homepage": "https://github.com/JustinSmethers/website#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  }
+}
