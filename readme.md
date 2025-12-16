@@ -47,7 +47,41 @@ Documentation for developing the Buzzz Django application.
    uv run python manage.py createsuperuser
    ```
 
-## Running the Development Server
+## Running in the Devcontainer
+
+Simply reopen the repo in the devcontainer. On start, `.devcontainer/post-start.sh` will:
+- Create `.env` next to `manage.py` if missing (defaults below).
+- Ensure `.venv` exists and install `requirements.txt`.
+- Start a Postgres container named `buzzz-db` on port `5432` (if Docker is available).
+- Run Django migrations, then start the dev server on `0.0.0.0:8000` (logs: `/tmp/devserver.log`).
+
+Port 8000 is forwarded by `.devcontainer/devcontainer.json`, so you can visit `http://localhost:8000/` on the host right after the container finishes starting.
+
+To adjust automation, edit `.devcontainer/flags.local.env` (values below override defaults):
+```
+DEVCONTAINER_AUTO_CREATE_ENV=0|1
+DEVCONTAINER_AUTO_START_DB=0|1
+DEVCONTAINER_DB_CONTAINER_NAME=buzzz-db
+DEVCONTAINER_DB_PORT=5432
+DEVCONTAINER_AUTO_START_SERVER=0|1
+DEVCONTAINER_DJANGO_PORT=8000
+```
+
+### Default .env values (created if missing)
+```dotenv
+DJANGO_SECRET_KEY=dev-secret-key
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1,0.0.0.0
+DATABASE_NAME=buzzz
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+HOST=host.docker.internal
+PORT=5432
+STATIC_URL=/static/
+STATIC_ROOT=staticfiles
+```
+
+## Running the Development Server (outside the devcontainer)
 
 With the virtual environment active and the database configured, start the Django development server:
 ```bash
