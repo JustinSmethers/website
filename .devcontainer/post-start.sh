@@ -167,6 +167,13 @@ PY
   log "Running migrations"
   (cd "$PROJECT_ROOT" && "$venv_python" manage.py migrate)
 
+  if flag_enabled DEVCONTAINER_AUTO_REFRESH_BLOG 1; then
+    log "Refreshing blog posts from local files"
+    (cd "$PROJECT_ROOT" && USE_LOCAL_BLOG_POSTS=1 "$venv_python" manage.py refresh_blog)
+  else
+    log "Skipping blog refresh (DEVCONTAINER_AUTO_REFRESH_BLOG=0)"
+  fi
+
   log "Starting Django devserver on 0.0.0.0:$port (logs: /tmp/devserver.log)"
   nohup sh -c "cd \"$PROJECT_ROOT\" && \"$venv_python\" manage.py runserver 0.0.0.0:$port" \
     >/tmp/devserver.log 2>&1 &
