@@ -1188,6 +1188,45 @@ main {
         width: 100%;
     }
 
+    body {
+        background-color: #151515;
+        color: #f8fafc;
+    }
+
+    .post-list {
+        gap: 20px;
+    }
+
+    .post-list-item {
+        padding: 14px 16px;
+        border-radius: 12px;
+        background: rgba(24, 24, 27, 0.85);
+        border: 1px solid #2f3340;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+    }
+
+    .post-list-row {
+        grid-template-columns: 1fr;
+        row-gap: 8px;
+    }
+
+    .post-date {
+        font-size: 14px;
+        font-weight: 600;
+        color: #cbd5e1;
+    }
+
+    .post-list-title {
+        color: #f8fafc;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .post-list-blurb {
+        color: #e2e8f0;
+        line-height: 1.55;
+    }
+
     .profile-banner {
         flex-direction: column;
         align-items: flex-start;
