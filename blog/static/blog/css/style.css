@@ -146,10 +146,12 @@ main {
 }
 
 .post-list-row {
-    display: flex;
-    gap: 24px;
-    align-items: baseline;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    column-gap: 16px;
+    row-gap: 4px;
+    align-items: start;
+    min-width: 0;
 }
 
 .post-date {
@@ -161,11 +163,7 @@ main {
 }
 
 .post-main-line {
-    display: flex;
-    flex: 1;
-    align-items: baseline;
-    flex-wrap: nowrap;
-    column-gap: 8px;
+    display: block;
     min-width: 0;
 }
 
@@ -173,8 +171,8 @@ main {
     margin: 0;
     font-size: 26px;
     color: #60a5fa;
-    flex: 0 1 auto;
     min-width: 0;
+    display: inline;
 }
 
 .post-list-title:hover {
@@ -185,10 +183,10 @@ main {
     margin: 0;
     color: #d1d5db;
     font-size: 18px;
-    flex: 1 1 0%;
     min-width: 0;
-    line-height: 1.5;
+    line-height: 1.6;
     word-break: break-word;
+    display: inline;
 }
 
 .post-list-blurb::before {
@@ -261,6 +259,8 @@ main {
 
 @media (max-width: 640px) {
     .post-list-row {
+        grid-template-columns: 120px 1fr;
+        column-gap: 12px;
         align-items: flex-start;
     }
 
