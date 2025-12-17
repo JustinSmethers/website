@@ -4,9 +4,14 @@
     "dockerfile": "Dockerfile",
     "context": "."
   },
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
+  "remoteUser": "root",
+  "containerUser": "root",
+  "runArgs": [
+    "--privileged"
+  ],
+  "mounts": [
+    "type=bind,source=${localEnv:HOME}/.codex,target=/root/.codex,consistency=cached"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [

@@ -19,6 +19,36 @@ log() {
   echo "[post-start] $*"
 }
 
+ensure_docker_daemon() {
+  if ! command -v docker >/dev/null 2>&1; then
+    log "Docker CLI not installed; skipping dockerd startup"
+    return
+  fi
+
+  if docker info >/dev/null 2>&1; then
+    log "Docker daemon already running"
+    return
+  fi
+
+  if ! command -v dockerd >/dev/null 2>&1; then
+    log "dockerd binary missing; cannot start daemon"
+    return
+  fi
+
+  log "Starting dockerd (logs: /tmp/dockerd.log)"
+  nohup dockerd >/tmp/dockerd.log 2>&1 &
+
+  for i in $(seq 1 30); do
+    if docker info >/dev/null 2>&1; then
+      log "Docker daemon is ready"
+      return
+    fi
+    sleep 1
+  done
+
+  log "Docker daemon did not become ready; check /tmp/dockerd.log"
+}
+
 ensure_env_file() {
   local env_path="$PROJECT_ROOT/.env"
   if [[ -f "$env_path" ]]; then
@@ -177,6 +207,22 @@ PY
   log "Starting Django devserver on 0.0.0.0:$port (logs: /tmp/devserver.log)"
   nohup sh -c "cd \"$PROJECT_ROOT\" && \"$venv_python\" manage.py runserver 0.0.0.0:$port" \
     >/tmp/devserver.log 2>&1 &
+
+  # Quick health check with retries to self-heal startup races
+  max_tries=3
+  sleep 3
+  for i in $(seq 1 "$max_tries"); do
+    if curl -sf "http://localhost:${port}/blog/" >/dev/null; then
+      log "Health check passed on attempt $i"
+      break
+    fi
+
+    log "Health check failed (attempt $i/$max_tries); restarting devserver"
+    pkill -f "manage.py runserver 0.0.0.0:$port" || true
+    nohup sh -c "cd \"$PROJECT_ROOT\" && \"$venv_python\" manage.py runserver 0.0.0.0:$port" \
+      >/tmp/devserver.log 2>&1 &
+    sleep 3
+  done
 }
 
 if flag_enabled DEVCONTAINER_AUTO_CREATE_ENV 1; then
@@ -186,5 +232,6 @@ else
 fi
 
 ensure_venv
+ensure_docker_daemon
 auto_start_db
 auto_start_server

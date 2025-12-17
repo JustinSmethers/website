@@ -5,6 +5,7 @@ RUN apt-get update && \
       curl \
       nodejs \
       npm \
+      docker.io \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
