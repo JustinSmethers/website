@@ -1189,8 +1189,28 @@ main {
     }
 
     body {
-        background-color: #151515;
+        background-color: #141820;
+        color: #e5eaf1;
+        line-height: 1.6;
+    }
+
+    .profile-banner {
+        background: linear-gradient(145deg, #1f2632, #161c26);
+        border: 1px solid #2c3340;
+        border-radius: 14px;
+        padding: 16px 18px;
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+    }
+
+    .profile-heading {
         color: #f8fafc;
+        font-size: 20px;
+    }
+
+    .profile-description {
+        color: #cfd7e3;
+        font-size: 15px;
+        line-height: 1.65;
     }
 
     .post-list {
@@ -1203,6 +1223,7 @@ main {
         background: rgba(24, 24, 27, 0.85);
         border: 1px solid #2f3340;
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+        color: #e5eaf1;
     }
 
     .post-list-row {
@@ -1214,17 +1235,23 @@ main {
         font-size: 14px;
         font-weight: 600;
         color: #cbd5e1;
+        letter-spacing: 0.02em;
     }
 
     .post-list-title {
-        color: #f8fafc;
+        color: #f8fbff;
         font-weight: 700;
-        line-height: 1.35;
+        font-size: 20px;
+        line-height: 1.45;
     }
 
     .post-list-blurb {
-        color: #e2e8f0;
-        line-height: 1.55;
+        color: #d8e1ec;
+        line-height: 1.6;
+    }
+
+    .post-list-blurb::before {
+        color: #9aa3b4;
     }
 
     .profile-banner {
