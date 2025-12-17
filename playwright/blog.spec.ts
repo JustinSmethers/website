@@ -8,11 +8,11 @@ test('blog listing loads', async ({ page }) => {
   await expect(page.locator('.profile-banner')).toBeVisible();
   await expect(page.getByAltText('Justin Smethers profile')).toBeVisible();
 
-  const posts = await page.$$eval('.post-card', cards =>
-    cards.map(card => ({
-      title: card.querySelector('h2')?.textContent?.trim(),
-      desc: card.querySelector('p')?.textContent?.trim(),
-      tags: Array.from(card.querySelectorAll('.tag')).map(el => el.textContent?.trim()),
+  const posts = await page.$$eval('.post-list-item', items =>
+    items.map(item => ({
+      title: item.querySelector('.post-list-title')?.textContent?.trim(),
+      blurb: item.querySelector('.post-list-blurb')?.textContent?.trim(),
+      date: item.querySelector('.post-date')?.textContent?.trim(),
     })),
   );
 

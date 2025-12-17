@@ -20,31 +20,23 @@
             </div>
         </div>
         <div class="posts">
-            {% for post in posts %}
-            <a href="{% url 'blog:blog_detail' post.post_name %}">
-                <div class="post-card white-glow">
-                    <div class="post-content-wrapper">
-                        <div class="post-text-content">
-                            <h2>{{ post.title }}</h2>
-                            {% if post.date_posted or post.tags %}
-                            <ul class="tag-list" aria-label="Post metadata">
-                                {% if post.date_posted %}
-                                <li class="tag tag--date">{{ post.date_posted|date:"M j, Y" }}</li>
+            <ul class="post-list">
+                {% for post in posts %}
+                <li class="post-list-item">
+                    <a href="{% url 'blog:blog_detail' post.post_name %}">
+                        <div class="post-list-row">
+                            <span class="post-date">{{ post.date_posted|date:"M d, Y" }}</span>
+                            <div class="post-main-line">
+                                <h2 class="post-list-title">{{ post.title }}</h2>
+                                {% if post.description %}
+                                <p class="post-list-blurb">{{ post.description }}</p>
                                 {% endif %}
-                                {% for tag in post.tags %}
-                                <li class="tag tag--{{ tag }}">{{ tag|upper }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                            <p>{{ post.description }}</p>
+                            </div>
                         </div>
-                        <div class="post-image-container">
-                            <img src="{{ post.thumbnail }}" alt="Thumbnail">
-                        </div>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 </div>
