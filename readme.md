@@ -5,8 +5,8 @@ Documentation for developing the Buzzz Django application.
 ## Prerequisites
 
 - Python 3.11 or newer
-- PostgreSQL running locally (or accessible remotely)
 - [`uv`](https://docs.astral.sh/uv/) for managing the Python environment and dependencies
+- PostgreSQL running locally (or accessible remotely)
 
 ## Initial Setup
 
@@ -80,6 +80,8 @@ PORT=5432
 STATIC_URL=/static/
 STATIC_ROOT=staticfiles
 ```
+
+If the devcontainer starts the bundled Postgres container and you see `connection refused` to `127.0.0.1:5432`, point `HOST` at the Docker bridge gateway instead (e.g., `HOST=$(docker network inspect bridge --format '{{(index .IPAM.Config 0).Gateway}}')`, currently `172.18.0.1`).
 
 ## Running the Development Server (outside the devcontainer)
 

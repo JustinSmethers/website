@@ -3,9 +3,16 @@ from .models import BlogPost
 
 
 def blog_home(request):
-    # ... Any logic for fetching blog posts, etc.
-    posts = BlogPost.objects.all().order_by('-date_posted')
-    return render(request, 'blog/blog_layout.html', {'posts': posts})
+    posts = list(BlogPost.objects.all().order_by('-date_posted'))
+    all_tags = sorted({tag for post in posts for tag in post.tags})
+    return render(
+        request,
+        'blog/blog_layout.html',
+        {
+            'posts': posts,
+            'all_tags': all_tags,
+        },
+    )
 
 def blog_detail(request, post_name):
     # Fetch the blog post by name or return a 404 if not found

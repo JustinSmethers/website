@@ -147,7 +147,8 @@ main {
 
 .post-list-row {
     display: grid;
-    grid-template-columns: 160px 1fr;
+    grid-template-columns: 160px 1fr auto;
+    grid-template-areas: "date main tags";
     column-gap: 16px;
     row-gap: 4px;
     align-items: start;
@@ -155,6 +156,7 @@ main {
 }
 
 .post-date {
+    grid-area: date;
     min-width: 140px;
     color: #cbd5e1;
     font-style: italic;
@@ -163,6 +165,7 @@ main {
 }
 
 .post-main-line {
+    grid-area: main;
     display: block;
     min-width: 0;
 }
@@ -192,6 +195,18 @@ main {
 .post-list-blurb::before {
     content: "\2014\00a0";
     color: #94a3b8;
+}
+
+.post-tags {
+    grid-area: tags;
+    align-self: center;
+    justify-self: end;
+    text-align: right;
+}
+
+.tag-list--compact {
+    margin: 0;
+    justify-content: flex-end;
 }
 
 .tag-list {
@@ -259,7 +274,12 @@ main {
 
 @media (max-width: 640px) {
     .post-list-row {
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "date"
+            "main"
+            "tags";
+        row-gap: 8px;
         column-gap: 12px;
         align-items: flex-start;
     }
@@ -275,6 +295,15 @@ main {
     .post-date {
         min-width: 0;
         width: 100%;
+    }
+
+    .post-tags {
+        justify-self: start;
+        text-align: left;
+    }
+
+    .tag-list--compact {
+        justify-content: flex-start;
     }
 }
 
@@ -339,11 +368,11 @@ main {
         padding-top: 20px;
     }
 
-    .posts {
-        display: flex; 
-        flex-direction: column; /* Align content vertically */
-        align-items: center; /* Align items to the center */
-        width: 100%; /* Full width */
+.posts {
+    display: flex; 
+    flex-direction: column; /* Align content vertically */
+    align-items: center; /* Align items to the center */
+    width: 100%; /* Full width */
         gap: 30px;
     }
 
@@ -366,8 +395,45 @@ main {
         width: 100%;
         height: 100%;
         text-decoration: none; /* removes the underline from links */
-        color: inherit; /* ensures the link inherits the color from its parent */
-    }
+    color: inherit; /* ensures the link inherits the color from its parent */
+}
+
+.tag-filter {
+    width: 100%;
+    background-color: #1f2937;
+    border: 1px solid #2f2f2f;
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tag-filter__label {
+    margin: 0;
+    color: #d1d5db;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.tag-filter__buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag--filter {
+    background-color: #4b5563;
+}
+
+.tag--active {
+    box-shadow: 0 0 0 2px #93c5fd;
+    transform: translateY(-1px);
+}
 
     .post-card:hover {
         background-color: #555; /* change to your preferred color */
