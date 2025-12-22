@@ -1654,19 +1654,27 @@ main {
 /* style header tags directly or something */
 h1 {
     font-size: 2.5em; /* for example, 40px */
-    color: #fff;
+    color: #f6b6b6;
     margin-bottom: .5em;
 }
 
 h2 {
     font-size: 2em; /* for example, 36px */
-    color: #fff;
+    color: #f7c59f;
     margin-bottom: .75em;
+}
+
+.post-content h2 {
+    margin-top: 0.8em;
+}
+
+.post-content h2:first-child {
+    margin-top: 0;
 }
 
 h3 {
     font-size: 1.75em; /* for example, 32px */
-    color: #fff;
+    color: #b9d7f2;
     margin-bottom: .75em;
 }
 
@@ -1686,4 +1694,13 @@ h6 {
     font-size: 1em; /* same as the body font size, for example, 20px */
     color: #fff;
     margin-bottom: .75em;
+}
+
+.post-content p {
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
+
+.post-content p:last-child {
+    margin-bottom: 0;
 }

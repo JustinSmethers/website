@@ -23,10 +23,11 @@ I have another setup for this website which essentially creates a website-in-a-b
 
 ## What's next?
 I plan to keep iterating on my devcontainer setups. Some things I want to explore:
+
 - a full data-stack-in-a-box for data projects. This would include a database (duckdb) and the ability to connect to cloud data warehouses (snowflake) for source data.
 - More ergonomic handling of config files for different agents
 - Better dev setup for VSCode with more extentions and settings
 - A shell script to automate the creation of git worktrees, devcontainers, and context gathering from Jira/tickets/PRs. I have a git worktree script already, but I haven't cracked the worktree + devcontainer setup so that it has access to the right .git, so I'm having to manually set that up for now.
 
-## Note
+### Note
 The thumbnail feels accurate for what I'm trying to do here with simple tasks, and also the thought of handing AI my job is anxiety inducing. But I do think this is the future of development. Now how do I make sure I have a job in that future...
