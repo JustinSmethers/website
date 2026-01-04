@@ -22,19 +22,19 @@ However, this also means I can move on to some harder problems. Nothing too impr
 Engineers much smarter than me are doing much more than me and seeing much bigger shifts than I'm capable of. In other words, how the hell do I keep up?
 
 For example, this post from Boris Cherny of Claude Code - [link](https://x.com/bcherny/status/2004897269674639461?s=19)
-![[Pasted image 20260104164627.png]]
+![Boris Cherny tweet](b-cherny-tweet.png "Boris Cherny tweet")
 
 Or this twitter exchange between Andrej Caparthy and Boris Cherny has been on my mind for days - [link](https://x.com/![alt text](image.png)bcherny/status/2004626064187031831?s=46&t=yQDRKYkkVW8gIi9IzD02dw)
-![[Pasted image 20260104164325.png]]
+![Boris Cherny - Andrej Caparthy tweet exchange](cherny-kaparthy-exchange.png "Boris Cherny - Andrej Caparthy tweet exchange")
 
 ## what I can do about it
 
 Hopefully work on bigger/more impactful/more exciting things aided/driven by terminal agents. See, this post from Chris Albon - [link](https://x.com/chrisalbon/status/2004744742765228055?s=46&t=yQDRKYkkVW8gIi9IzD02dw)
 
-![[Pasted image 20251227154323.png]]
+![Chris Albon tweet](chris-albon-tweet.png "Chris Albon tweet")
 
 Or maybe I'll be "cleaning this dog shit up for 20 years", but I sort of doubt that - [link](https://x.com/kenwheeler/status/2004960488250372302)
 
-![[Pasted image 20251227155121.png]]
+![Ken Wheeler tweet](ken-wheeler-tweet.png "Ken Wheeler tweet saying 'I'm going to be cleaning this dog shit up for 20 years'")
 
 For now, I'll post my cute little blogs and make my cute little side projects and make my cute little devcontainer setup and ignore the anxiety.
