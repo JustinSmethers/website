@@ -2,6 +2,47 @@
 
 Documentation for developing the Buzzz Django application.
 
+## Cloudflare static hosting
+
+The public blog can be built from Markdown with the existing Django templates
+and views. The build uses an in-memory SQLite database and dedicated settings;
+it does not load `.env`, connect to PostgreSQL, or require production credentials.
+Cloudflare serves HTML, CSS, and images without a running Django server or
+database. Publishing a post requires a new build. The Django admin is not
+included in the public export.
+
+With Python 3.11 and the requirements installed in your active environment:
+
+```bash
+npm ci
+python manage.py test --settings=buzzz.build_settings
+python scripts/validate_tags.py
+npm run build:static
+npm run test:static
+npm run preview:static
+```
+
+The generated site is in `dist/`, which is ignored by Git. Original Markdown
+and database files are not uploaded. Post URLs keep their
+`/blog/post/<post-name>/` paths, and `/` redirects to `/blog/`.
+
+Deploy with `npm run deploy:cloudflare` using `CLOUDFLARE_API_TOKEN`, or sign in
+with `npx wrangler login`. The separate `cf` CLI can manage the account and DNS
+alongside Wrangler. Its browser login is independent of Wrangler's login.
+
+The GitHub workflow tests pull requests and deploys pushes to `main`. Configure
+the repository secret `CLOUDFLARE_API_TOKEN` with deployment access to the existing
+`justinsmethers-blog` Worker. The account ID is public configuration. Keep
+custom-domain setup outside regular deployments so the publishing token does
+not need DNS access. Do not use a short-lived interactive login token as a
+GitHub secret.
+
+Before changing nameservers, copy all DNS records, verify the Cloudflare preview,
+and remove the old registrar DNSSEC delegation. Verify the live website and email
+after the switch, then enable Cloudflare DNSSEC and install its DS record at
+Squarespace. Preserve `plausible.justinsmethers.com` until analytics is migrated
+separately. Retire the VPS only after keeping a usable backup outside DigitalOcean.
+
 ## Prerequisites
 
 - Python 3.11 or newer

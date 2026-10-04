@@ -4,6 +4,10 @@
   "description": "Documentation for developing the Buzzz Django application.",
   "main": "index.js",
   "scripts": {
+    "build:static": "python scripts/build_static.py",
+    "preview:static": "wrangler dev --ip 127.0.0.1 --port 8000",
+    "deploy:cloudflare": "wrangler deploy",
+    "test:static": "STATIC_SITE=1 playwright test",
     "test": "playwright test",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
@@ -21,6 +25,7 @@
   },
   "homepage": "https://github.com/JustinSmethers/website#readme",
   "devDependencies": {
-    "@playwright/test": "^1.57.0"
+    "@playwright/test": "^1.57.0",
+    "wrangler": "4.147.0"
   }
 }
