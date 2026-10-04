@@ -32,10 +32,11 @@ alongside Wrangler. Its browser login is independent of Wrangler's login.
 
 The GitHub workflow tests pull requests and deploys pushes to `main`. Configure
 the repository secret `CLOUDFLARE_API_TOKEN` with deployment access to the existing
-`justinsmethers-blog` Worker. The account ID is public configuration. Keep
-custom-domain setup outside regular deployments so the publishing token does
-not need DNS access. Do not use a short-lived interactive login token as a
-GitHub secret.
+`justinsmethers-blog` Worker and its configured custom domains. The account ID is
+public configuration. `wrangler.jsonc` connects `justinsmethers.com` and
+`www.justinsmethers.com`; the Cloudflare zone must be active before deploying
+these domains. Scope the publishing token to the intended account and zone.
+Do not use a short-lived interactive login token as a GitHub secret.
 
 Before changing nameservers, copy all DNS records, verify the Cloudflare preview,
 and remove the old registrar DNSSEC delegation. Verify the live website and email
