@@ -1,4 +1,12 @@
 .env
+.env.*
+.venv/
+dist/
+.wrangler/
+.cloudflare/
+static-build-*/
+migration-backups/
+playwright/.artifacts/
 __pycache__/
 venv/
 /staticfiles/

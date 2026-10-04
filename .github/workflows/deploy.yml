@@ -1,38 +1,55 @@
-name: Deploy to Production
+name: Build and deploy static blog
+
 on:
+  pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    env:
-      SSH_PRIVATE_KEY: ${{ secrets.GH_ACTIONS }}
-      SERVER_IP: ${{ secrets.SERVER_IP }}
-      SERVER_USER: ${{ secrets.USER }}
-      PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
-      VENV_PATH: venv
     steps:
-    - name: Debug deploy env
-      shell: bash
-      run: |
-        set -euo pipefail
-        echo "SERVER_USER='${SERVER_USER:-<unset>}'"
-        echo "SERVER_IP='${SERVER_IP:-<unset>}'"
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
-    
-    - name: Deploy to server
-      run: |
-        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "cd $PROJECT_PATH && \
-        git pull origin main && \
-        source $VENV_PATH/bin/activate && \
-        pip install -r requirements.txt && \
-        python manage.py migrate && \
-        python manage.py collectstatic --noinput && \
-        sudo systemctl restart gunicorn.service"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          npm ci
+      - name: Validate content and Django behavior
+        run: |
+          python scripts/validate_tags.py
+          python manage.py test --settings=buzzz.build_settings
+      - name: Build public pages
+        run: npm run build:static
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+      - name: Verify static hosting
+        run: npm run test:static
+      - name: Save browser diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-results
+          path: |
+            test-results/
+            playwright/.artifacts/
+      - name: Deploy to Cloudflare
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: npm run deploy:cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: '8717d50e8a82c20c82db14ae638fdfeb'

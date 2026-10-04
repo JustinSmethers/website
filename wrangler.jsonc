@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "justinsmethers-blog",
+  "account_id": "8717d50e8a82c20c82db14ae638fdfeb",
+  "compatibility_date": "2026-10-04",
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "justinsmethers.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.justinsmethers.com",
+      "custom_domain": true
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "none"
+  }
+}
