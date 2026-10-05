@@ -11,6 +11,12 @@ Cloudflare serves HTML, CSS, and images without a running Django server or
 database. Publishing a post requires a new build. The Django admin is not
 included in the public export.
 
+Cloudflare Web Analytics is enabled for the domain with automatic script
+installation. Cloudflare injects the beacon into responses on the custom
+domains; the templates do not embed a second analytics script. Reports are in
+the account's Web Analytics dashboard. The old Plausible server is retained
+until its historical data has been backed up.
+
 With Python 3.11 and the requirements installed in your active environment:
 
 ```bash
