@@ -15,7 +15,7 @@ test('published post pages and local images are available', async ({ page, reque
     await expect(page.locator('a[rel="author"]')).toHaveAttribute('href', '/');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
-      `https://www.justinsmethers.com${new URL(link).pathname}`,
+      `https://justinsmethers.com${new URL(link).pathname}`,
     );
     await expect(page.locator('.post-content')).not.toBeEmpty();
     const imagePaths = await page.locator('img[src^="/static/"]').evaluateAll(images =>
@@ -109,7 +109,7 @@ test('filters posts by tag', async ({ page }) => {
 
 test('static sitemap lists the canonical homepage, blog, and every post', async ({ page, request }) => {
   test.skip(!process.env.STATIC_SITE && !process.env.PLAYWRIGHT_BASE_URL, 'Static hosting check');
-  const origin = 'https://www.justinsmethers.com';
+  const origin = 'https://justinsmethers.com';
 
   await page.goto('/blog/');
   const postPaths = await page.locator('.post-list-item > a').evaluateAll(links =>

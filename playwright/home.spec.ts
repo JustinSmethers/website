@@ -8,7 +8,7 @@ test('homepage identifies Justin and links to his work', async ({ page }) => {
   await expect(page.getByText('I’m a senior analytics engineer at Brooklyn Data.', { exact: false })).toBeVisible();
   await expect(page.getByAltText('Justin Smethers profile')).toBeVisible();
   await expect(page.getByRole('link', { name: 'Read the blog' })).toHaveAttribute('href', '/blog/');
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://www.justinsmethers.com/');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://justinsmethers.com/');
   const profile = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
   expect(profile['@type']).toBe('ProfilePage');
   expect(profile.mainEntity).toMatchObject({

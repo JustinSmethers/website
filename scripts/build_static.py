@@ -9,7 +9,7 @@ from xml.etree.ElementTree import Element, ElementTree, SubElement
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
-SITE_ORIGIN = "https://www.justinsmethers.com"
+SITE_ORIGIN = "https://justinsmethers.com"
 
 
 def main() -> None:
