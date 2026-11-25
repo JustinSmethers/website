@@ -39,7 +39,7 @@ def main() -> None:
             call_command("collectstatic", verbosity=0, interactive=False, ignore=["*.md", "admin"])
 
         client = Client()
-        paths = [reverse("home"), reverse("blog:index")]
+        paths = [reverse("home")]
         paths.extend(reverse("blog:blog_detail", args=[post.post_name]) for post in posts)
         for path in paths:
             response = client.get(path)
@@ -59,7 +59,11 @@ def main() -> None:
             encoding="utf-8",
         )
 
-        redirects = []
+        old_blog_index = reverse("blog:index")
+        redirects = [
+            f"{old_blog_index} / 301",
+            f"{old_blog_index.rstrip('/')} / 301",
+        ]
         # The original GitHub importer used strip('.md'), which also removed
         # leading/trailing m and d characters from three published URLs.
         # Keep externally shared links working after using proper file stems.
@@ -84,7 +88,7 @@ def main() -> None:
             shutil.rmtree(output)
         shutil.copytree(staged, output)
 
-    print(f"Built {len(posts)} posts, the homepage, the blog index, and the sitemap in {output}")
+    print(f"Built {len(posts)} posts, the blog homepage, and the sitemap in {output}")
 
 
 if __name__ == "__main__":

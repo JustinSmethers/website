@@ -1,6 +1,8 @@
 name: Build and deploy static blog
 
 on:
+  push:
+    branches: [codex/homepage-screenshot]
   workflow_dispatch:
 
 permissions:
@@ -43,9 +45,10 @@ jobs:
               const response = await page.goto('http://127.0.0.1:8000/');
               if (response.status() !== 200) throw new Error('Homepage did not load');
               await page.locator('h1#profile-title').waitFor();
+              await page.locator('.post-list-item > a').first().waitFor();
               await page.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
               await page.waitForFunction(() => getComputedStyle(document.querySelector('nav')).display === 'flex');
-              await page.screenshot({ path: 'homepage-preview.png', animations: 'disabled' });
+              await page.screenshot({ path: 'blog-homepage-preview.png', fullPage: true, animations: 'disabled' });
             } finally {
               await browser.close();
             }
@@ -57,7 +60,7 @@ jobs:
       - name: Save desktop screenshot
         uses: actions/upload-artifact@v4
         with:
-          name: homepage-preview
-          path: homepage-preview.png
+          name: blog-homepage-preview
+          path: blog-homepage-preview.png
           if-no-files-found: error
           retention-days: 1
