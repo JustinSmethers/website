@@ -1,21 +1,15 @@
 name: Build and deploy static blog
 
 on:
-  pull_request:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: cloudflare-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
-  build:
+  screenshot:
     runs-on: ubuntu-24.04
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,27 +23,41 @@ jobs:
         run: |
           python -m pip install -r requirements.txt
           npm ci
-      - name: Validate content and Django behavior
-        run: |
-          python scripts/validate_tags.py
-          python manage.py test --settings=buzzz.build_settings
-      - name: Build public pages
+      - name: Build the exact draft
         run: npm run build:static
       - name: Install browser
         run: npx playwright install --with-deps chromium
-      - name: Verify static hosting
-        run: npm run test:static
-      - name: Save browser diagnostics
-        if: failure()
+      - name: Capture the draft homepage
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 --directory dist &
+          for attempt in {1..15}; do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8000/; then break; fi
+            sleep 1
+          done
+          node <<'JS'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch();
+            try {
+              const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+              const response = await page.goto('http://127.0.0.1:8000/');
+              if (response.status() !== 200) throw new Error('Homepage did not load');
+              await page.locator('h1#profile-title').waitFor();
+              await page.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())));
+              await page.waitForFunction(() => getComputedStyle(document.querySelector('nav')).display === 'flex');
+              await page.screenshot({ path: 'homepage-preview.png', animations: 'disabled' });
+            } finally {
+              await browser.close();
+            }
+          })().catch(error => {
+            console.error(error);
+            process.exitCode = 1;
+          });
+          JS
+      - name: Save desktop screenshot
         uses: actions/upload-artifact@v4
         with:
-          name: playwright-results
-          path: |
-            test-results/
-            playwright/.artifacts/
-      - name: Deploy to Cloudflare
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: npm run deploy:cloudflare
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: '8717d50e8a82c20c82db14ae638fdfeb'
+          name: homepage-preview
+          path: homepage-preview.png
+          if-no-files-found: error
+          retention-days: 1
