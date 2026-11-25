@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block title %}Blog | Justin Smethers{% endblock %}
+
+{% block page_metadata %}
+<meta name="description" content="Posts and talks by Justin Smethers on analytics engineering, Python, and AI tools.">
+{% endblock %}
+
 {% block additional_styles %}
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">

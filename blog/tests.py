@@ -55,3 +55,11 @@ class TagValidationScriptTests(TestCase):
         )
 
         self.assertEqual(result.returncode, 0, msg=result.stderr)
+
+
+class HomePageTests(TestCase):
+    def test_homepage_identifies_justin_smethers(self):
+        response = self.client.get("/")
+
+        self.assertTemplateUsed(response, "home.html")
+        self.assertContains(response, "<title>Justin Smethers | Senior Analytics Engineer</title>")
