@@ -34,11 +34,9 @@ test('static export preserves legacy redirects and returns 404 for unpublished p
   test.skip(!process.env.STATIC_SITE && !process.env.PLAYWRIGHT_BASE_URL, 'Static hosting check');
   const root = await request.get('/', { maxRedirects: 0 });
   expect(root.status()).toBe(200);
-  for (const path of ['/blog', '/blog/']) {
-    const response = await request.get(path, { maxRedirects: 0 });
-    expect(response.status(), path).toBe(301);
-    expect(new URL(response.headers()['location'], 'https://justinsmethers.com').pathname).toBe('/');
-  }
+  const oldBlog = await request.get('/blog/', { maxRedirects: 0 });
+  expect(oldBlog.status()).toBe(200);
+  expect(await oldBlog.text()).toBe(await root.text());
   for (const [oldName, newName] of [
     ['evcontainers', 'devcontainers'],
     ['odern-python-packaging-with-uv', 'modern-python-packaging-with-uv'],

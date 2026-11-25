@@ -39,9 +39,11 @@ def main() -> None:
             call_command("collectstatic", verbosity=0, interactive=False, ignore=["*.md", "admin"])
 
         client = Client()
-        paths = [reverse("home")]
-        paths.extend(reverse("blog:blog_detail", args=[post.post_name]) for post in posts)
-        for path in paths:
+        canonical_paths = [reverse("home")]
+        canonical_paths.extend(reverse("blog:blog_detail", args=[post.post_name]) for post in posts)
+        # Some browsers cached the previous root-to-blog 301. Keeping the old
+        # index available prevents those redirects from looping.
+        for path in [*canonical_paths, reverse("blog:index")]:
             response = client.get(path)
             if response.status_code != 200:
                 raise RuntimeError(f"Unable to render {path}: HTTP {response.status_code}")
@@ -50,7 +52,7 @@ def main() -> None:
             page.write_bytes(response.content)
 
         sitemap = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-        for path in paths:
+        for path in canonical_paths:
             location = SubElement(SubElement(sitemap, "url"), "loc")
             location.text = f"{SITE_ORIGIN}{path}"
         ElementTree(sitemap).write(staged / "sitemap.xml", encoding="utf-8", xml_declaration=True)
@@ -59,11 +61,7 @@ def main() -> None:
             encoding="utf-8",
         )
 
-        old_blog_index = reverse("blog:index")
-        redirects = [
-            f"{old_blog_index} / 301",
-            f"{old_blog_index.rstrip('/')} / 301",
-        ]
+        redirects = []
         # The original GitHub importer used strip('.md'), which also removed
         # leading/trailing m and d characters from three published URLs.
         # Keep externally shared links working after using proper file stems.

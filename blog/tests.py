@@ -72,7 +72,9 @@ class HomePageTests(TestCase):
         self.assertContains(response, post.title)
         self.assertContains(response, 'href="/blog/post/published-post/"')
 
-    def test_old_blog_index_redirects_to_homepage(self):
-        response = self.client.get("/blog/")
+    def test_old_blog_index_serves_the_homepage_without_redirecting(self):
+        root = self.client.get("/")
+        old_blog = self.client.get("/blog/")
 
-        self.assertRedirects(response, "/", status_code=301)
+        self.assertContains(old_blog, '<link rel="canonical" href="https://justinsmethers.com/">')
+        self.assertEqual(old_blog.content, root.content)

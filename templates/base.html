@@ -19,7 +19,7 @@
         </style>
 
         <title>{% block title %}Justin Smethers{% endblock %}</title>
-        <link rel="canonical" href="https://justinsmethers.com{{ request.path }}">
+        <link rel="canonical" href="https://justinsmethers.com{% block canonical_path %}{{ request.path }}{% endblock %}">
         {% block page_metadata %}{% endblock %}
         {% load static %}
         <link type="text/css" href="{% static 'blog/css/style.css' %}" rel="stylesheet">
