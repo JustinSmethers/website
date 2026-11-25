@@ -58,8 +58,21 @@ class TagValidationScriptTests(TestCase):
 
 
 class HomePageTests(TestCase):
-    def test_homepage_identifies_justin_smethers(self):
+    def test_homepage_shows_the_blog(self):
+        post = BlogPost.objects.create(
+            title="A published post",
+            post_name="published-post",
+            tags=["post"],
+        )
+
         response = self.client.get("/")
 
-        self.assertTemplateUsed(response, "home.html")
+        self.assertTemplateUsed(response, "blog/blog_layout.html")
         self.assertContains(response, "<title>Justin Smethers | Senior Analytics Engineer</title>")
+        self.assertContains(response, post.title)
+        self.assertContains(response, 'href="/blog/post/published-post/"')
+
+    def test_old_blog_index_redirects_to_homepage(self):
+        response = self.client.get("/blog/")
+
+        self.assertRedirects(response, "/", status_code=301)
