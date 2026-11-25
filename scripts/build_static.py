@@ -5,9 +5,11 @@ from pathlib import Path
 import shutil
 import sys
 import tempfile
+from xml.etree.ElementTree import Element, ElementTree, SubElement
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
+SITE_ORIGIN = "https://justinsmethers.com"
 
 
 def main() -> None:
@@ -37,7 +39,7 @@ def main() -> None:
             call_command("collectstatic", verbosity=0, interactive=False, ignore=["*.md", "admin"])
 
         client = Client()
-        paths = [reverse("blog:index")]
+        paths = [reverse("home")]
         paths.extend(reverse("blog:blog_detail", args=[post.post_name]) for post in posts)
         for path in paths:
             response = client.get(path)
@@ -47,7 +49,21 @@ def main() -> None:
             page.parent.mkdir(parents=True, exist_ok=True)
             page.write_bytes(response.content)
 
-        redirects = ["/ /blog/ 301"]
+        sitemap = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+        for path in paths:
+            location = SubElement(SubElement(sitemap, "url"), "loc")
+            location.text = f"{SITE_ORIGIN}{path}"
+        ElementTree(sitemap).write(staged / "sitemap.xml", encoding="utf-8", xml_declaration=True)
+        (staged / "robots.txt").write_text(
+            f"User-agent: *\nSitemap: {SITE_ORIGIN}/sitemap.xml\n",
+            encoding="utf-8",
+        )
+
+        old_blog_index = reverse("blog:index")
+        redirects = [
+            f"{old_blog_index} / 301",
+            f"{old_blog_index.rstrip('/')} / 301",
+        ]
         # The original GitHub importer used strip('.md'), which also removed
         # leading/trailing m and d characters from three published URLs.
         # Keep externally shared links working after using proper file stems.
@@ -72,7 +88,7 @@ def main() -> None:
             shutil.rmtree(output)
         shutil.copytree(staged, output)
 
-    print(f"Built {len(posts)} posts and the blog index in {output}")
+    print(f"Built {len(posts)} posts, the blog homepage, and the sitemap in {output}")
 
 
 if __name__ == "__main__":

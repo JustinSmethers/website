@@ -1,24 +1,47 @@
 {% extends "base.html" %}
 
-{% block additional_styles %}
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+{% block title %}Justin Smethers | Senior Analytics Engineer{% endblock %}
+
+{% block page_metadata %}
+<meta name="description" content="Justin Smethers is a senior analytics engineer at Brooklyn Data. Read his writing on analytics engineering, Python, and AI agents.">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+        "@type": "Person",
+        "@id": "https://justinsmethers.com/#justin-smethers",
+        "name": "Justin Smethers",
+        "url": "https://justinsmethers.com/",
+        "image": "https://avatars.githubusercontent.com/u/48101971?v=4",
+        "jobTitle": "Senior Analytics Engineer",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Brooklyn Data"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/justinsmethers/",
+            "https://github.com/JustinSmethers"
+        ]
+    }
+}
+</script>
 {% endblock %}
 
 {% block content %}
 <div class="centered-content">
     <div class="content-area">
-        <div class="profile-banner">
+        <section class="profile-banner" aria-labelledby="profile-title">
             <div class="profile-banner-content">
                 <div class="profile-avatar">
                     <img src="https://avatars.githubusercontent.com/u/48101971?v=4" alt="Justin Smethers profile">
                 </div>
                 <div class="profile-text">
-                    <p class="profile-heading">I'm Justin.</p>
-                    <p class="profile-description">This site will be a collection of notes, write-ups, projects, thought out posts, garbage, and occassional breakthroughs. Mostly about data.</p>
+                    <h1 class="profile-heading" id="profile-title">Justin Smethers</h1>
+                    <p class="profile-description">I’m a senior analytics engineer at Brooklyn Data. I write about analytics engineering, Python, and how I use AI tools to build software.</p>
                 </div>
             </div>
-        </div>
+        </section>
         <div class="posts">
             {% if all_tags %}
             <div class="tag-filter" aria-label="Filter posts by tag">

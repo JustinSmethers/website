@@ -2,14 +2,22 @@ import { test, expect } from '@playwright/test';
 
 test('published post pages and local images are available', async ({ page, request }) => {
   test.setTimeout(90_000);
-  await page.goto('/blog/');
+  await page.goto('/');
   const postLinks = await page.locator('.post-list-item > a').evaluateAll(links =>
     links.map(link => (link as HTMLAnchorElement).href),
   );
   expect(postLinks.length).toBeGreaterThan(0);
   for (const link of postLinks) {
     await page.goto(link, { waitUntil: 'domcontentloaded' });
-    await expect(page.locator('.post-title')).toBeVisible();
+    const title = page.locator('.post-title');
+    await expect(title).toBeVisible();
+    await expect(page).toHaveTitle(`${(await title.innerText()).trim()} | Justin Smethers`);
+    await expect(page.locator('a[rel="author"]')).toHaveAttribute('href', '/');
+    await expect(page.locator('.back-button')).toHaveAttribute('href', '/');
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      `https://justinsmethers.com${new URL(link).pathname}`,
+    );
     await expect(page.locator('.post-content')).not.toBeEmpty();
     const imagePaths = await page.locator('img[src^="/static/"]').evaluateAll(images =>
       images.map(image => (image as HTMLImageElement).src),
@@ -22,11 +30,15 @@ test('published post pages and local images are available', async ({ page, reque
   }
 });
 
-test('static export preserves root redirect and returns 404 for unpublished pages', async ({ request }) => {
+test('static export preserves legacy redirects and returns 404 for unpublished pages', async ({ request }) => {
   test.skip(!process.env.STATIC_SITE && !process.env.PLAYWRIGHT_BASE_URL, 'Static hosting check');
   const root = await request.get('/', { maxRedirects: 0 });
-  expect(root.status()).toBe(301);
-  expect(root.headers()['location']).toMatch(/\/blog\/$/);
+  expect(root.status()).toBe(200);
+  for (const path of ['/blog', '/blog/']) {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status(), path).toBe(301);
+    expect(new URL(response.headers()['location'], 'https://justinsmethers.com').pathname).toBe('/');
+  }
   for (const [oldName, newName] of [
     ['evcontainers', 'devcontainers'],
     ['odern-python-packaging-with-uv', 'modern-python-packaging-with-uv'],
@@ -43,10 +55,9 @@ test('static export preserves root redirect and returns 404 for unpublished page
 });
 
 test('blog listing loads', async ({ page }) => {
-  await page.goto('/blog/');
+  await page.goto('/');
 
   await expect(page.getByRole('link', { name: 'Justin Smethers' })).toBeVisible();
-  await expect(page.getByText("I'm Justin", { exact: false })).toBeVisible();
   await expect(page.locator('.profile-banner')).toBeVisible();
   await expect(page.getByAltText('Justin Smethers profile')).toBeVisible();
 
@@ -58,13 +69,14 @@ test('blog listing loads', async ({ page }) => {
     })),
   );
 
+  expect(posts.length).toBeGreaterThan(0);
   console.log('Playwright saw blog posts:', JSON.stringify(posts, null, 2));
 
   await page.screenshot({ path: 'playwright/.artifacts/blog.png', fullPage: true });
 });
 
 test('filters posts by tag', async ({ page }) => {
-  await page.goto('/blog/');
+  await page.goto('/');
 
   const filterButtons = page.locator('[data-filter-tag]');
   await expect(filterButtons.first()).toBeVisible();
@@ -99,4 +111,24 @@ test('filters posts by tag', async ({ page }) => {
     items.filter(item => window.getComputedStyle(item as HTMLElement).display !== 'none').length,
   );
   expect(visibleAfterReset).toBeGreaterThanOrEqual(visible.length);
+});
+
+test('static sitemap lists the blog homepage and every post', async ({ page, request }) => {
+  test.skip(!process.env.STATIC_SITE && !process.env.PLAYWRIGHT_BASE_URL, 'Static hosting check');
+  const origin = 'https://justinsmethers.com';
+
+  await page.goto('/');
+  const postPaths = await page.locator('.post-list-item > a').evaluateAll(links =>
+    links.map(link => new URL((link as HTMLAnchorElement).href).pathname),
+  );
+
+  const robots = await request.get('/robots.txt');
+  expect(robots.status()).toBe(200);
+  expect(await robots.text()).toContain(`Sitemap: ${origin}/sitemap.xml`);
+
+  const sitemap = await request.get('/sitemap.xml');
+  expect(sitemap.status()).toBe(200);
+  const xml = await sitemap.text();
+  const locations = Array.from(xml.matchAll(/<loc>([^<]+)<\/loc>/g), match => match[1]);
+  expect(locations.sort()).toEqual(['/', ...postPaths].map(path => origin + path).sort());
 });

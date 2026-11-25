@@ -30,7 +30,9 @@ npm run preview:static
 
 The generated site is in `dist/`, which is ignored by Git. Original Markdown
 and database files are not uploaded. Post URLs keep their
-`/blog/post/<post-name>/` paths, and `/` redirects to `/blog/`.
+`/blog/post/<post-name>/` paths. The homepage at `/` displays the blog, and the
+old `/blog/` index redirects there. The build publishes `/sitemap.xml` and
+`/robots.txt`.
 
 Deploy with `npm run deploy:cloudflare` using `CLOUDFLARE_API_TOKEN`, or sign in
 with `npx wrangler login`. The separate `cf` CLI can manage the account and DNS
